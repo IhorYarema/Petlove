@@ -76,6 +76,10 @@ div {
   overflow: hidden;
 }
 
+section {
+  box-sizing: border-box;
+}
+
 /* [data-sonner-toaster],
 [data-toast-container],
 [data-hot-toast],

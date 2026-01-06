@@ -2,6 +2,8 @@ import { lazy, Suspense, useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Loader from "./components/Loader/Loader";
+import NotFound from "./pages/NotFound/NotFound";
+
 import css from "./App.module.css";
 import { Toaster } from "react-hot-toast";
 
@@ -16,7 +18,7 @@ function App() {
           <Routes>
             <Route path="/" element={<MainPage />} />
 
-            {/* <Route path="*" element={<NotFound />} /> */}
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
       </div>
