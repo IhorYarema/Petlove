@@ -4,8 +4,12 @@ import Icon from "../Icon/Icon";
 
 export default function Logo({ className }) {
   return (
-    <NavLink to="/" className={`${css.logo} ${className}`}>
-      <Icon className={css.iconLogo} name="logo" size={76} />
+    <NavLink to="/home" className={`${css.logo} ${className}`}>
+      <Icon
+        className={`${css.iconLogo} ${css.iconMainLogo}`}
+        name="logo"
+        size={76}
+      />
     </NavLink>
   );
 }

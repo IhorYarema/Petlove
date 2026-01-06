@@ -1,0 +1,39 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader {
+  position: relative;
+  border-radius: 50%;
+  overflow: hidden;
+  width: 292px;
+  height: 292px;
+}
+
+.spinner {
+  position: absolute;
+  animation: spin 2s linear infinite;
+}
+
+.percent {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-family: "Manrope", sans-serif;
+  font-weight: 700;
+  font-size: 50px;
+  color: rgba(255, 255, 255, 1);
+
+  pointer-events: none;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}

@@ -1,11 +1,25 @@
+import { lazy, Suspense, useEffect, useState } from "react";
+import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
-import "./App.css";
+import Loader from "./components/Loader/Loader";
+import css from "./App.module.css";
 import { Toaster } from "react-hot-toast";
+
+const MainPage = lazy(() => import("./pages/MainPage/MainPage"));
 
 function App() {
   return (
     <div>
       <Header />
+      <div className={css.pageContent}>
+        <Suspense fallback={<Loader />}>
+          <Routes>
+            <Route path="/" element={<MainPage />} />
+
+            {/* <Route path="*" element={<NotFound />} /> */}
+          </Routes>
+        </Suspense>
+      </div>
       <Toaster
         position="top-right"
         toastOptions={{
