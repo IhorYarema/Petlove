@@ -20,7 +20,15 @@ export default function Header() {
         <Logo className={css.logo} />
 
         <div className={css.rightContainer}>
-          <AuthNav className={css.authNav} />
+          {isLoggedIn ? (
+            <>
+              <LogoutBtn className={css.logOutBtn} onLogout={handleLogout} />
+            </>
+          ) : (
+            <>
+              <AuthNav className={css.authNav} />
+            </>
+          )}
           {/* Mobile burger menu */}
           <BurgerMenu
             open={menuOpen}

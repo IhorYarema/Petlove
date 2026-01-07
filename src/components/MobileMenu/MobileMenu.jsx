@@ -31,7 +31,7 @@ export default function MobileMenu({ setOpen }) {
 
         {isLoggedIn ? (
           <>
-            <LogoutBtn />
+            <LogoutBtn className={css.logOutBtn} onLogout={handleLogout} />
           </>
         ) : (
           <>

@@ -20,8 +20,16 @@
   display: none;
 }
 
+.header .logOutBtn {
+  display: none;
+}
+
 @media (min-width: 768px) {
   .header .authNav {
+    display: flex;
+  }
+
+  .header .logOutBtn {
     display: flex;
   }
 }
