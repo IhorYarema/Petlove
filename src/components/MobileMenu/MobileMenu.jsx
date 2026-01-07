@@ -1,9 +1,12 @@
 import css from "./MobileMenu.module.css";
 import Nav from "../Nav/Nav";
+import AuthNav from "../AuthNav/AuthNav";
 import Icon from "../Icon/Icon";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
 export default function MobileMenu({ setOpen }) {
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const [isClosing, setIsClosing] = useState(false);
 
   const closeMenu = () => {
@@ -25,6 +28,16 @@ export default function MobileMenu({ setOpen }) {
         </button>
 
         <Nav closeMenu={closeMenu} />
+
+        {isLoggedIn ? (
+          <>
+            <LogoutBtn />
+          </>
+        ) : (
+          <>
+            <AuthNav closeMenu={closeMenu} />
+          </>
+        )}
       </aside>
     </div>
   );
