@@ -1,0 +1,11 @@
+.iconMenu {
+  width: 32px;
+  height: 32px;
+}
+
+@media (min-width: 768px) {
+  .iconMenu {
+    width: 36px;
+    height: 36px;
+  }
+}

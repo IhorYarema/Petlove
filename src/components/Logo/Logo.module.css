@@ -9,3 +9,15 @@ section .iconLogo {
     height: 100px;
   }
 }
+
+header .iconLogo {
+  width: 76px;
+  height: 20px;
+}
+
+@media (min-width: 768px) {
+  header .iconLogo {
+    width: 105px;
+    height: 28px;
+  }
+}
