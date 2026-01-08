@@ -10,6 +10,10 @@ import { Toaster } from "react-hot-toast";
 const MainPage = lazy(() => import("./pages/MainPage/MainPage"));
 const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
 
+const RegisterPage = lazy(() =>
+  import("./pages/RegistrationPage/RegistrationPage")
+);
+
 function App() {
   return (
     <div>
@@ -19,6 +23,8 @@ function App() {
           <Routes>
             <Route path="/" element={<MainPage />} />
             <Route path="/home" element={<HomePage />} />
+
+            <Route path="/register" element={<RegisterPage />} />
 
             <Route path="*" element={<NotFound />} />
           </Routes>
