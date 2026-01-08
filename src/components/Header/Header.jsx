@@ -6,19 +6,27 @@ import { useLocation } from "react-router-dom";
 import { useState } from "react";
 import MobileMenu from "../MobileMenu/MobileMenu";
 import { useSelector } from "react-redux";
+import Nav from "../Nav/Nav";
 
 export default function Header() {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const location = useLocation();
   const isMain = location.pathname === "/";
+  const isHome = location.pathname === "/home";
 
+  const headerClass = `
+  ${css.header}
+  ${isMain ? css.headerMain : ""}
+  ${isHome ? css.headerHome : ""}
+`;
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className={`${css.header} ${isMain ? css.headerMain : ""}`}>
+    <header className={headerClass}>
       <div className={css.container}>
         <Logo className={css.logo} />
 
+        <Nav />
         <div className={css.rightContainer}>
           {isLoggedIn ? (
             <>

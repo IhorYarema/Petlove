@@ -1,7 +1,7 @@
 import css from "./Nav.module.css";
 import { NavLink } from "react-router-dom";
 
-export default function UserNav({ closeMenu = () => {}, className = "" }) {
+export default function Nav({ closeMenu = () => {}, className = "" }) {
   return (
     <nav className={`${css.navGroup} ${className}`}>
       <NavLink

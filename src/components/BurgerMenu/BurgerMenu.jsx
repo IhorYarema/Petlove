@@ -1,10 +1,19 @@
 import css from "./BurgerMenu.module.css";
 import Icon from "../Icon/Icon";
+import { useLocation } from "react-router-dom";
 
 export default function BurgerMenu({ open, setOpen, className = "" }) {
+  const location = useLocation();
+  const isHome = location.pathname === "/home";
+
   const toggleMenu = () => {
     setOpen((prev) => !prev);
   };
+
+  const iconClass = `
+    ${css.iconMenu}
+    ${isHome ? css.iconMenuWhite : ""}
+  `;
 
   return (
     <button
@@ -12,7 +21,7 @@ export default function BurgerMenu({ open, setOpen, className = "" }) {
       onClick={toggleMenu}
       aria-label={open ? "Close menu" : "Open menu"}
     >
-      <Icon className={css.iconMenu} name="menu" />
+      <Icon className={iconClass} name="menu" />
     </button>
   );
 }

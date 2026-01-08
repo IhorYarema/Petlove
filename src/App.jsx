@@ -8,6 +8,7 @@ import css from "./App.module.css";
 import { Toaster } from "react-hot-toast";
 
 const MainPage = lazy(() => import("./pages/MainPage/MainPage"));
+const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Suspense fallback={<Loader />}>
           <Routes>
             <Route path="/" element={<MainPage />} />
+            <Route path="/home" element={<HomePage />} />
 
             <Route path="*" element={<NotFound />} />
           </Routes>

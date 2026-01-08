@@ -38,3 +38,7 @@
   display: flex;
   gap: 16px;
 }
+
+.headerHome .container {
+  padding: 0;
+}

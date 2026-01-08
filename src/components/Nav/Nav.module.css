@@ -30,3 +30,26 @@ aside .navGroup .link {
 aside .navGroup .active {
   border: 1px solid rgba(246, 184, 61, 1);
 }
+
+/* FOR DESKTOP HEADER */
+
+header .navGroup {
+  display: flex;
+  gap: 10px;
+}
+
+header .link {
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 15px 20px;
+  border-radius: 30px;
+
+  color: rgba(255, 255, 255, 1);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: -0.03em;
+}
+
+header .active {
+  border: 1px solid rgba(246, 184, 61, 1);
+}

@@ -1,6 +1,7 @@
 .iconMenu {
   width: 32px;
   height: 32px;
+  color: rgba(38, 38, 38, 1);
 }
 
 @media (min-width: 768px) {
@@ -8,4 +9,8 @@
     width: 36px;
     height: 36px;
   }
+}
+
+.iconMenuWhite {
+  color: rgba(255, 255, 255, 1);
 }
