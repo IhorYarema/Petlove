@@ -65,12 +65,12 @@
   padding: 0;
 }
 
-.headerHome .nav {
+.nav {
   display: none;
 }
 
 @media (min-width: 1440px) {
-  .headerHome .nav {
+  .nav {
     display: flex;
   }
 }

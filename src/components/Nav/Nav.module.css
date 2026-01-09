@@ -34,19 +34,21 @@ aside .navWhite .active {
 
 /* FOR DESKTOP HEADER */
 
-header .navGroup {
-  display: flex;
-  gap: 10px;
-}
+@media (min-width: 1440px) {
+  header .navGroup {
+    display: flex;
+    gap: 10px;
+  }
 
-header .navGroup .link {
-  padding: 15px 20px;
-  border-radius: 30px;
+  header .navGroup .link {
+    padding: 15px 20px;
+    border-radius: 30px;
 
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 20px;
-  letter-spacing: -0.03em;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: -0.03em;
+  }
 }
 
 .navWhite .link {
