@@ -26,7 +26,7 @@ export default function Header() {
       <div className={css.container}>
         <Logo className={css.logo} />
 
-        <Nav />
+        <Nav className={css.nav} />
         <div className={css.rightContainer}>
           {isLoggedIn ? (
             <>

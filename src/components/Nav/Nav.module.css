@@ -16,6 +16,7 @@ aside .navGroup .link {
   font-weight: 500;
   font-size: 14px;
   line-height: 18px;
+  color: rgba(38, 38, 38, 1);
 }
 
 @media (min-width: 768px) {
@@ -27,7 +28,7 @@ aside .navGroup .link {
   }
 }
 
-aside .navGroup .active {
+aside .navWhite .active {
   border: 1px solid rgba(246, 184, 61, 1);
 }
 
@@ -38,18 +39,29 @@ header .navGroup {
   gap: 10px;
 }
 
-header .link {
-  border: 1px solid rgba(255, 255, 255, 0.4);
+header .navGroup .link {
   padding: 15px 20px;
   border-radius: 30px;
 
-  color: rgba(255, 255, 255, 1);
   font-weight: 500;
   font-size: 16px;
   line-height: 20px;
   letter-spacing: -0.03em;
 }
 
-header .active {
+.navWhite .link {
+  border: 1px solid rgba(38, 38, 38, 0.15);
+
+  color: rgba(38, 38, 38, 1);
+}
+
+.navWhite .active {
   border: 1px solid rgba(246, 184, 61, 1);
+}
+
+/* YELLOW */
+
+.navYellow .link {
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 1);
 }

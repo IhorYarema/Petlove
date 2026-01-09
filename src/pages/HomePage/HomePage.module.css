@@ -1,13 +1,13 @@
-header {
+/* header {
   position: absolute;
   z-index: 9999;
   width: 100%;
   top: 28px;
 
   padding: 0 40px;
-}
+} */
 
-@media (min-width: 768px) {
+/* @media (min-width: 768px) {
   header {
     top: 32px;
     padding: 0 64px;
@@ -18,7 +18,7 @@ header {
   header {
     padding: 0 96px;
   }
-}
+} */
 
 .section {
   color: rgba(255, 255, 255, 1);
