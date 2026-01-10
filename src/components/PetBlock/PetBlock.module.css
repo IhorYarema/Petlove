@@ -1,3 +1,28 @@
 .container {
   background-color: rgba(246, 184, 61, 1);
+  border-radius: 30px;
+  z-index: 1;
+  display: flex;
+  align-items: flex-end;
+  /* position: relative; */
+}
+
+@media (min-width: 768px) {
+  .container {
+    border-radius: 60px;
+  }
+}
+
+.iconRectangle {
+  width: 332px;
+  height: 414px;
+  position: absolute;
+  z-index: 2;
+  top: 5%;
+  left: 8%;
+}
+
+.img {
+  position: relative;
+  z-index: 3;
 }
