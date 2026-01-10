@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 import { NavLink, useNavigate } from "react-router-dom";
 import Icon from "../Icon/Icon";
 import schema from "../../schemas/signUpSchema";
+import Title from "../Title/Title";
 
 export default function RegisterForm() {
   const dispatch = useDispatch();
@@ -51,7 +52,7 @@ export default function RegisterForm() {
       onSubmit={handleSubmit(handleFormSubmit, onError)}
     >
       <div className={css.textContainer}>
-        <h2 className={css.title}>Registration</h2>
+        <Title className={css.title} />
         <p className={css.formText}>
           Thank you for your interest in our platform.
         </p>
