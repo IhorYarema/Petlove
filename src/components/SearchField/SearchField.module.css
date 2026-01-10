@@ -51,12 +51,18 @@
 
 .closeBtn {
   position: absolute;
-  top: 15px;
-  right: 38px;
+  top: 12px;
+  right: 36px;
   display: flex;
 }
 
 @media (min-width: 768px) {
+  .closeBtn {
+    position: absolute;
+    top: 15px;
+    right: 38px;
+    display: flex;
+  }
   .iconClose {
     width: 18px;
     height: 18px;
