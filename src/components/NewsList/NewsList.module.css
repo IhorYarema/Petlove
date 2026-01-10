@@ -1,0 +1,33 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+@media (min-width: 768px) {
+  .list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 24px;
+    row-gap: 32px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .list {
+    gap: 35px;
+    row-gap: 40px;
+  }
+}
+
+@media (min-width: 768px) {
+  .list .item {
+    width: calc((100% - 24px) / 2);
+  }
+}
+
+@media (min-width: 1440px) {
+  .list .item {
+    width: calc((100% - 2 * 35px) / 3);
+  }
+}
