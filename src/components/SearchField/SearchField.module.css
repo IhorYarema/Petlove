@@ -1,0 +1,68 @@
+.inputContainer {
+  width: 100%;
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .inputContainer {
+    width: 230px;
+  }
+}
+
+.input {
+  width: 100%;
+  border: 1px solid rgba(38, 38, 38, 0.15);
+  padding: 12px 55px 12px 12px;
+  border-radius: 30px;
+
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: -0.03em;
+}
+
+@media (min-width: 768px) {
+  .input {
+    padding: 14px 55px 14px 14px;
+
+    font-size: 16px;
+    line-height: 20px;
+  }
+}
+
+.input::placeholder {
+  color: rgba(38, 38, 38, 0.5);
+}
+
+.iconSearch {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+}
+
+@media (min-width: 768px) {
+  .iconSearch {
+    width: 18px;
+    height: 18px;
+    top: 15px;
+    right: 14px;
+  }
+}
+
+.closeBtn {
+  position: absolute;
+  top: 15px;
+  right: 38px;
+  display: flex;
+}
+
+@media (min-width: 768px) {
+  .iconClose {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+.inputContainer:has(.input:placeholder-shown) .closeBtn {
+  display: none;
+}

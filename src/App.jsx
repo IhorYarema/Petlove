@@ -9,6 +9,7 @@ import { Toaster } from "react-hot-toast";
 
 const MainPage = lazy(() => import("./pages/MainPage/MainPage"));
 const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
+const NewsPage = lazy(() => import("./pages/NewsPage/NewsPage"));
 
 const RegisterPage = lazy(() =>
   import("./pages/RegistrationPage/RegistrationPage")
@@ -23,6 +24,7 @@ function App() {
           <Routes>
             <Route path="/" element={<MainPage />} />
             <Route path="/home" element={<HomePage />} />
+            <Route path="/news" element={<NewsPage />} />
 
             <Route path="/register" element={<RegisterPage />} />
 

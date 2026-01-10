@@ -3,12 +3,11 @@ import { useLocation } from "react-router-dom";
 
 export default function Title({ className = "" }) {
   const location = useLocation();
-  //   const isRegister = location.pathname === "/register";
-  //   const isLogin = location.pathname === "/login";
 
   const titles = {
     "/register": "Registration",
     "/login": "Log in",
+    "/news": "News",
   };
 
   const title = titles[location.pathname] || "";
