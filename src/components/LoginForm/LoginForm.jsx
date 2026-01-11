@@ -1,4 +1,4 @@
-import css from "./RegistrationForm.module.css";
+import css from "./LoginForm.module.css";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useState } from "react";
@@ -10,7 +10,7 @@ import Icon from "../Icon/Icon";
 import schema from "../../schemas/signUpSchema";
 import Title from "../Title/Title";
 
-export default function RegisterForm() {
+export default function LoginForm() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -54,19 +54,12 @@ export default function RegisterForm() {
       <div className={css.textContainer}>
         <Title className={css.title} />
         <p className={css.formText}>
-          Thank you for your interest in our platform.
+          Welcome! Please enter your credentials to login to the platform:
         </p>
       </div>
 
       <input
         className={`${css.input} ${css.firstInput}`}
-        type="text"
-        placeholder="Name"
-        {...register("name")}
-      />
-
-      <input
-        className={css.input}
         type="email"
         placeholder="Email"
         {...register("email")}
@@ -74,7 +67,7 @@ export default function RegisterForm() {
 
       <div className={css.inputWrapper}>
         <input
-          className={css.input}
+          className={`${css.input} ${css.lastInput}`}
           type={showPassword ? "text" : "password"}
           placeholder="Password"
           {...register("password")}
@@ -88,31 +81,15 @@ export default function RegisterForm() {
         </button>
       </div>
 
-      <div className={css.inputWrapper}>
-        <input
-          className={`${css.input} ${css.lastInput}`}
-          type={showPassword ? "text" : "password"}
-          placeholder="Confirm password"
-          {...register("password")}
-        />
-        <button className={css.btnIcon} type="button" onClick={togglePassword}>
-          <Icon
-            className={css.iconEye}
-            size={18}
-            name={showPassword ? "eye" : "eye-off"}
-          />
-        </button>
-      </div>
-
       <button type="submit" className={css.btn} disabled={loading}>
         {loading ? "Loading..." : "Registration"}
       </button>
 
       <p className={css.lowerText}>
-        Already have an account?{" "}
+        Don’t have an account? Register{" "}
         <span>
-          <NavLink className={css.link} to="/login">
-            Login
+          <NavLink className={css.link} to="/register">
+            Register
           </NavLink>
         </span>
       </p>
