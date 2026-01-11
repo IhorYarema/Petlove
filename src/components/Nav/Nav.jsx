@@ -4,7 +4,8 @@ import { useLocation } from "react-router-dom";
 
 export default function Nav({ closeMenu = () => {}, className = "" }) {
   const location = useLocation();
-  const isRegister = location.pathname === "/register";
+  const isRegister =
+    location.pathname === "/register" || location.pathname === "/login";
   const isHome = location.pathname === "/home";
 
   const navClass = `
