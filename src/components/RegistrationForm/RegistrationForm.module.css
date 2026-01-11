@@ -14,6 +14,12 @@
   }
 }
 
+@media (min-width: 1440px) {
+  .form {
+    padding: 77px 84px;
+  }
+}
+
 .textContainer {
   display: flex;
   flex-direction: column;

@@ -10,6 +10,8 @@
 @media (min-width: 768px) {
   .container {
     border-radius: 60px;
+    justify-content: flex-end;
+    padding-right: 90px;
   }
 }
 
@@ -22,7 +24,147 @@
   left: 8%;
 }
 
+@media (min-width: 768px) {
+  .iconRectangle {
+    width: 572px;
+    height: 715px;
+    left: 15%;
+    top: 3%;
+  }
+}
+
+@media (min-width: 1440x) {
+  .iconRectangle {
+    right: 80%;
+    top: 1%;
+  }
+}
+
 .img {
   position: relative;
   z-index: 3;
+}
+
+.petCont {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .petCont {
+    display: flex;
+    background-color: rgba(255, 255, 255, 1);
+    width: 294px;
+    height: 121px;
+    border-radius: 20px;
+    padding: 16px 16px 18px;
+    gap: 8px;
+
+    position: absolute;
+    top: 263px;
+    left: 64px;
+
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: -0.02em;
+  }
+  .petAvatar {
+    background-color: rgba(255, 244, 223, 1);
+    min-width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 32px;
+    letter-spacing: -0.04em;
+  }
+  .textCont {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .nameCont {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .petName {
+    color: rgba(246, 184, 61, 1);
+
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: -0.03em;
+  }
+  .birthday span {
+    color: rgba(38, 38, 38, 0.5);
+  }
+  .text {
+    color: rgba(38, 38, 38, 0.8);
+  }
+}
+
+@media (min-width: 1440px) {
+  .container {
+    min-width: calc((100% - 32px) / 2);
+    height: 592;
+    padding: 22px 20px 0 36px;
+  }
+  .img {
+    width: 536px;
+    height: 632px;
+  }
+
+  .petCont {
+    top: 550px;
+    left: 93px;
+    z-index: 4;
+
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: -0.02em;
+  }
+  .petAvatar {
+    background-color: rgba(255, 244, 223, 1);
+    min-width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 32px;
+    letter-spacing: -0.04em;
+  }
+  .textCont {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .nameCont {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .petName {
+    color: rgba(246, 184, 61, 1);
+
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: -0.03em;
+  }
+  .birthday span {
+    color: rgba(38, 38, 38, 0.5);
+  }
+  .text {
+    color: rgba(38, 38, 38, 0.8);
+  }
 }

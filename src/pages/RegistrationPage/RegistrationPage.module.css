@@ -7,3 +7,15 @@
     padding: 32px;
   }
 }
+
+@media (min-width: 1440px) {
+  .sectionContainer {
+    display: flex;
+    gap: 32px;
+  }
+
+  /* .sectionContainer div, */
+  .sectionContainer form {
+    min-width: calc((100% - 32px) / 2);
+  }
+}
