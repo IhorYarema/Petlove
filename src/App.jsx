@@ -10,6 +10,7 @@ import { Toaster } from "react-hot-toast";
 const MainPage = lazy(() => import("./pages/MainPage/MainPage"));
 const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
 const NewsPage = lazy(() => import("./pages/NewsPage/NewsPage"));
+const FriendsPage = lazy(() => import("./pages/FriendsPage/FriendsPage"));
 
 const RegisterPage = lazy(() =>
   import("./pages/RegistrationPage/RegistrationPage")
@@ -26,6 +27,7 @@ function App() {
             <Route path="/" element={<MainPage />} />
             <Route path="/home" element={<HomePage />} />
             <Route path="/news" element={<NewsPage />} />
+            <Route path="/friends" element={<FriendsPage />} />
 
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/login" element={<LoginPage />} />

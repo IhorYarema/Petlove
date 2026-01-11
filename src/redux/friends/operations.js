@@ -1,11 +1,11 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import api from "../../services/api";
 
-export const fetchNews = createAsyncThunk(
-  "news/fetchNews",
-  async ({ page = 1, perPage = 10 }, thunkAPI) => {
+export const fetchFriends = createAsyncThunk(
+  "friends/fetchFriends",
+  async (thunkAPI) => {
     try {
-      const { data } = await api.get(`/news?page=${page}&limit=${perPage}`);
+      const { data } = await api.get("/friends/");
       return data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.response?.data || e.message);

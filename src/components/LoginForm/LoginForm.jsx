@@ -86,7 +86,7 @@ export default function LoginForm() {
       </button>
 
       <p className={css.lowerText}>
-        Don’t have an account? Register{" "}
+        Don’t have an account?{" "}
         <span>
           <NavLink className={css.link} to="/register">
             Register
