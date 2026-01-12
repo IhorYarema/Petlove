@@ -82,7 +82,7 @@ export default function LoginForm() {
       </div>
 
       <button type="submit" className={css.btn} disabled={loading}>
-        {loading ? "Loading..." : "Registration"}
+        {loading ? "Loading..." : "Log in"}
       </button>
 
       <p className={css.lowerText}>
