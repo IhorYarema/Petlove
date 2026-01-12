@@ -10,6 +10,13 @@
   display: flex;
   gap: 14px;
   position: relative;
+
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s;
+}
+
+.item:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
 }
 
 @media (min-width: 768px) {

@@ -4,10 +4,10 @@ import { getTodayWorkTime } from "../../services/getTodayWorkTime";
 export default function FriendsItem({ item }) {
   return (
     <a
-      href={item.addressUrl}
+      href={item.addressUrl ? item.addressUrl : item.url}
       target="_blank"
       rel="noopener noreferrer"
-      // className={css.item}
+      className={css.link}
     >
       <div className={css.item}>
         <img src={item.imageUrl} alt="Friend's Image" className={css.img} />
