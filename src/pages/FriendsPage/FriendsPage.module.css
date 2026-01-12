@@ -17,35 +17,17 @@
 .sectionContainer {
   display: flex;
   flex-direction: column;
-}
-
-.upperCont {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  margin-bottom: 24px;
+  gap: 40px;
 }
 
 @media (min-width: 768px) {
-  .upperCont {
-    flex-direction: row;
-    justify-content: space-between;
-    margin-bottom: 44px;
+  .sectionContainer {
+    gap: 44px;
   }
 }
 
 @media (min-width: 1440px) {
-  .upperCont {
-    margin-bottom: 60px;
-  }
-}
-
-.list {
-  margin-bottom: 44px;
-}
-
-@media (min-width: 768px) {
-  .list {
-    margin-bottom: 60px;
+  .sectionContainer {
+    gap: 60px;
   }
 }
