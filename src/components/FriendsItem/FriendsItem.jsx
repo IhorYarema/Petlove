@@ -14,9 +14,6 @@ export default function FriendsItem({ item }) {
         <p className={css.workTime}>{getTodayWorkTime(item.workDays)}</p>
         <div className={css.infoCont}>
           <h3 className={css.title}>{item.title}</h3>
-          {/* <p className={css.date}>
-          {new Date(item.date).toLocaleDateString("en-GB")}
-        </p> */}
           <p className={css.info}>
             <span>Email: </span>
             {item.email ? item.email : "no email"}

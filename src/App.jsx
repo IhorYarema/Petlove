@@ -11,6 +11,7 @@ const MainPage = lazy(() => import("./pages/MainPage/MainPage"));
 const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
 const NewsPage = lazy(() => import("./pages/NewsPage/NewsPage"));
 const FriendsPage = lazy(() => import("./pages/FriendsPage/FriendsPage"));
+const NoticesPage = lazy(() => import("./pages/NoticesPage/NoticesPage"));
 
 const RegisterPage = lazy(() =>
   import("./pages/RegistrationPage/RegistrationPage")
@@ -27,6 +28,7 @@ function App() {
             <Route path="/" element={<MainPage />} />
             <Route path="/home" element={<HomePage />} />
             <Route path="/news" element={<NewsPage />} />
+            <Route path="/notices" element={<NoticesPage />} />
             <Route path="/friends" element={<FriendsPage />} />
 
             <Route path="/register" element={<RegisterPage />} />

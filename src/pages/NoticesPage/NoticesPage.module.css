@@ -1,0 +1,33 @@
+.section {
+  padding: 60px 20px 88px;
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding: 85px 32px 88px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .section {
+    padding: 96px 32px 80px;
+  }
+}
+
+/* .sectionContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+@media (min-width: 768px) {
+  .sectionContainer {
+    gap: 44px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .sectionContainer {
+    gap: 60px;
+  }
+} */

@@ -9,6 +9,7 @@ export default function Title({ className = "" }) {
     "/login": "Log in",
     "/news": "News",
     "/friends": "Our friends",
+    "/notices": "Find your favorite pet",
   };
 
   const title = titles[location.pathname] || "";
