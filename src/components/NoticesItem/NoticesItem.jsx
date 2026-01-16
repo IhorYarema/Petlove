@@ -5,8 +5,13 @@ export default function NoticesItem({ item }) {
   return (
     <div className={css.item}>
       <img src={item.imgURL} alt="Notice's Image" className={css.img} />
-
-      <h3 className={css.title}>{item.title}</h3>
+      <div className={css.upperCont}>
+        <h3 className={css.title}>{item.title}</h3>
+        <div className={css.ratingCont}>
+          <Icon className={css.iconStar} name="star" size={16} />
+          <p className={css.info}>{item.popularity}</p>
+        </div>
+      </div>
       <div className={css.infoCont}>
         <p className={css.info}>
           <span>Name </span>

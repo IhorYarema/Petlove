@@ -14,20 +14,18 @@
   }
 }
 
-/* .sectionContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
+.title {
+  margin-bottom: 40px;
 }
 
 @media (min-width: 768px) {
-  .sectionContainer {
-    gap: 44px;
+  .title {
+    margin-bottom: 44px;
   }
 }
 
 @media (min-width: 1440px) {
-  .sectionContainer {
-    gap: 60px;
+  .title {
+    margin-bottom: 40px;
   }
-} */
+}

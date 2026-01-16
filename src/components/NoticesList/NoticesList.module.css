@@ -1,0 +1,32 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+@media (min-width: 768px) {
+  .list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .list {
+    gap: 32px;
+    row-gap: 40px;
+  }
+}
+
+@media (min-width: 768px) {
+  .list .item {
+    width: calc((100% - 20px) / 2);
+  }
+}
+
+@media (min-width: 1440px) {
+  .list .item {
+    width: calc((100% - 2 * 32px) / 3);
+  }
+}
