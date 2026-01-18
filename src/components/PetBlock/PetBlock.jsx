@@ -22,10 +22,7 @@ export default function PetBlock() {
       <Icon name="rectangle" className={css.iconRectangle} />
 
       <div className={css.petCont}>
-        <div className={css.petAvatar}>
-          {isReg ? "🐈" : "🐶"}
-          {/* <Icon name="cat" className={css.iconPet} /> */}
-        </div>
+        <div className={css.petAvatar}>{isReg ? "🐈" : "🐶"}</div>
         <div className={css.textCont}>
           <div className={css.nameCont}>
             <h3 className={css.petName}>{isReg ? "Jack" : "Rich"}</h3>

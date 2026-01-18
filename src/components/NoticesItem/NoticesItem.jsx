@@ -1,7 +1,12 @@
 import css from "./NoticesItem.module.css";
 import Icon from "../Icon/Icon";
+import ModalAttention from "../ModalAttention/ModalAttention";
 
 export default function NoticesItem({ item }) {
+  const openModal = () => {
+    return <ModalAttention />;
+  };
+
   return (
     <div className={css.item}>
       <img src={item.imgURL} alt="Notice's Image" className={css.img} />
@@ -39,7 +44,9 @@ export default function NoticesItem({ item }) {
         {item.price ? "$" + item.price : "Price needs clarification"}
       </p>
       <div className={css.btnsCont}>
-        <button className={css.moreBtn}>Learn more</button>
+        <button onClick={openModal} className={css.moreBtn}>
+          Learn more
+        </button>
         <button className={css.favBtn}>
           <Icon
             className={`${css.iconHeart} ${css.iconHeart}`}
