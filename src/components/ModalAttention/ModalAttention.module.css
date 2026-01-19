@@ -1,0 +1,155 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(38, 38, 38, 0.3);
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+}
+
+@media (min-width: 768px) {
+  .backdrop {
+    padding: 0 151px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .backdrop {
+    padding: 0 407px;
+  }
+}
+
+.modal {
+  width: 100%;
+  padding: 40px 20px;
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .modal {
+    padding: 60px;
+  }
+}
+
+.closeBtn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.petAvatar {
+  background-color: rgba(255, 244, 223, 1);
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 44px;
+  line-height: 44px;
+  letter-spacing: -0.04em;
+  margin-bottom: 20px;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 20px;
+  letter-spacing: -0.03em;
+  color: rgba(246, 184, 61, 1);
+  margin-bottom: 20px;
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: 24px;
+    line-height: 28px;
+  }
+}
+
+.text {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: -0.02em;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .text {
+    margin-bottom: 28px;
+  }
+}
+
+.btnsCont {
+  display: flex;
+  gap: 8px;
+}
+
+.link {
+  display: flex;
+  justify-content: center;
+  border-radius: 30px;
+
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+@media (min-width: 768px) {
+  .link {
+    font-size: 16px;
+    line-height: 20px;
+  }
+}
+
+.login {
+  background-color: rgba(246, 184, 61, 1);
+  color: rgba(255, 255, 255, 1);
+  padding: 12px 48px;
+}
+
+@media (min-width: 768px) {
+  .login {
+    padding: 14px 48px;
+  }
+}
+
+.register {
+  background-color: rgba(255, 244, 223, 1);
+  color: rgba(246, 184, 61, 1);
+  padding: 12px 24px;
+}
+
+/* ANIMATION */
+.backdrop {
+  opacity: 1;
+  transition: opacity 300ms ease;
+}
+
+.modal {
+  transform: scale(1);
+  opacity: 1;
+  transition: all 300ms ease;
+}
+
+.closing.backdrop {
+  opacity: 0;
+}
+
+.closing.modal {
+  transform: scale(0.95);
+  opacity: 0;
+}

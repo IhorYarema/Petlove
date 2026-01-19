@@ -5,7 +5,7 @@ export default function AuthNav({ closeMenu = () => {}, className = "" }) {
   return (
     <div className={`${css.authNav} ${className}`}>
       <NavLink
-        to="login"
+        to="/login"
         end
         className={({ isActive }) =>
           `${css.link} ${css.login} ${isActive ? css.active : ""}`

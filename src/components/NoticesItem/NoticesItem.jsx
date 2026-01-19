@@ -1,10 +1,21 @@
 import css from "./NoticesItem.module.css";
 import Icon from "../Icon/Icon";
 import ModalAttention from "../ModalAttention/ModalAttention";
+import { useSelector } from "react-redux";
+import { useState } from "react";
 
 export default function NoticesItem({ item }) {
-  const openModal = () => {
-    return <ModalAttention />;
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleLearnMore = () => {
+    if (!isLoggedIn) {
+      setIsModalOpen(true);
+      return;
+    }
+
+    // логика для авторизованного юзера
+    console.log("Open notice details");
   };
 
   return (
@@ -44,7 +55,7 @@ export default function NoticesItem({ item }) {
         {item.price ? "$" + item.price : "Price needs clarification"}
       </p>
       <div className={css.btnsCont}>
-        <button onClick={openModal} className={css.moreBtn}>
+        <button onClick={handleLearnMore} className={css.moreBtn}>
           Learn more
         </button>
         <button className={css.favBtn}>
@@ -55,6 +66,12 @@ export default function NoticesItem({ item }) {
           />
         </button>
       </div>
+      {isModalOpen && (
+        <ModalAttention
+          className={css.modal}
+          onClose={() => setIsModalOpen(false)}
+        />
+      )}
     </div>
   );
 }
