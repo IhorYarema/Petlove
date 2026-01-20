@@ -1,0 +1,21 @@
+.filters {
+  background-color: rgba(255, 244, 223, 1);
+  padding: 20px;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.filters input {
+  border: none;
+}
+
+.filters input::placeholder {
+  color: rgba(38, 38, 38, 1);
+}
+
+.selectCont {
+  display: flex;
+  gap: 8px;
+}

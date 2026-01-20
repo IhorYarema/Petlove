@@ -1,0 +1,38 @@
+.custom__control {
+  background-color: rgba(255, 255, 255, 1);
+  border: none;
+  border-radius: 30px;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.custom__menu {
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 15px;
+  margin-top: 4px;
+  /* overflow: hidden; */
+  padding: 12px;
+}
+
+.custom__option {
+  color: rgba(38, 38, 38, 0.6);
+  cursor: pointer;
+  text-transform: capitalize;
+}
+
+.custom__option:not(:last-child) {
+  margin-bottom: 8px;
+}
+
+.custom__option--is-selected {
+  color: rgba(246, 184, 61, 1);
+}
+
+/* .custom__dropdown-indicator svg {
+  fill: rgba(251, 251, 251, 1);
+  width: 20px;
+  height: 20px;
+} */
