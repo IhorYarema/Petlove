@@ -1,16 +1,14 @@
 import css from "./NoticesFilters.module.css";
-import Select from "react-select/base";
-import Icon from "../Icon/Icon";
 import SearchField from "../SearchField/SearchField";
 import SelectComponent from "../SelectComponent/SelectComponent";
 import {
   fetchCategories,
-  fetchCities,
   fetchSex,
   fetchType,
 } from "../../redux/filters/operations";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import LocationSelect from "../LocationSelect/LocationSelect";
 
 export default function NoticesFilters({ className }) {
   const defaultFilter = 0;
@@ -20,7 +18,6 @@ export default function NoticesFilters({ className }) {
   const categories = useSelector((state) => state.filters.categories);
   const sex = useSelector((state) => state.filters.sex);
   const types = useSelector((state) => state.filters.types);
-  const cities = useSelector((state) => state.filters.cities);
 
   // const loading = useSelector((state) => state.filters.loading);
 
@@ -28,7 +25,6 @@ export default function NoticesFilters({ className }) {
     dispatch(fetchCategories());
     dispatch(fetchSex());
     dispatch(fetchType());
-    dispatch(fetchCities());
   }, [dispatch]);
 
   // OPTIONS
@@ -56,14 +52,6 @@ export default function NoticesFilters({ className }) {
     })),
   ];
 
-  const citiesOptions = [
-    { value: "all", label: "Show all" },
-    ...cities.map((opt) => ({
-      value: opt,
-      label: opt,
-    })),
-  ];
-
   const handleCategoryChange = (value) => {
     console.log("Selected category:", value);
     // тут позже будет dispatch(fetchNotices({ category: value }))
@@ -75,11 +63,6 @@ export default function NoticesFilters({ className }) {
   };
 
   const handleTypeChange = (value) => {
-    console.log("Selected Type:", value);
-    // тут позже будет dispatch(fetchNotices({ category: value }))
-  };
-
-  const handleCityChange = (value) => {
     console.log("Selected Type:", value);
     // тут позже будет dispatch(fetchNotices({ category: value }))
   };
@@ -104,26 +87,7 @@ export default function NoticesFilters({ className }) {
         defaultFilter={defaultFilter}
         onFilterChange={handleTypeChange}
       />
-      {/* <SelectComponent
-        options={citiesOptions}
-        defaultFilter={defaultFilter}
-        onFilterChange={handleCityChange}
-      /> */}
-      <div className={`${css.inputContainer} ${className}`}>
-        <Select
-          unstyled
-          value={defaultFilter}
-          onChange={handleCityChange}
-          options={citiesOptions}
-          isSearchable={false}
-          className={css.input}
-          classNamePrefix="custom"
-        />
-        <Icon name="search" size={18} className={css.iconSearch} />
-        <button className={css.closeBtn}>
-          <Icon className={css.iconClose} name="cross-small" size={18} />
-        </button>
-      </div>
+      <LocationSelect />
       <div className={css.radioFilters}></div>
     </div>
   );

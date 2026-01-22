@@ -1,0 +1,50 @@
+.custom__control {
+  background-color: rgba(255, 255, 255, 1);
+  border: none;
+  border-radius: 30px;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  width: 100%;
+  position: relative;
+  padding: 12px 55px 12px 12px;
+}
+
+@media (min-width: 768px) {
+  .custom__control {
+    padding: 14px 55px 14px 14px;
+  }
+}
+
+.iconSearch {
+  position: absolute;
+}
+
+.custom__menu {
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 15px;
+  margin-top: 4px;
+  /* overflow: hidden; */
+  padding: 12px;
+  z-index: 9999;
+}
+
+.custom__option {
+  color: rgba(38, 38, 38, 0.4);
+  cursor: pointer;
+  text-transform: capitalize;
+}
+
+.custom__option:not(:last-child) {
+  margin-bottom: 8px;
+}
+
+.custom__dropdown-indicator svg {
+  display: none;
+}
+
+.custom__control:has(.input:placeholder-shown) .closeBtn {
+  display: none;
+}
