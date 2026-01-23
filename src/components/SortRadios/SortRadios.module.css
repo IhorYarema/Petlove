@@ -1,0 +1,56 @@
+.sortGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+@media (min-width: 768px) {
+  .sortGroup {
+    gap: 8px;
+    flex-wrap: nowrap;
+  }
+}
+
+.sortOption input {
+  display: none;
+}
+
+.sortSpan {
+  display: inline-flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 6px;
+  padding: 12px;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 1);
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: -0.03em;
+}
+
+@media (min-width: 768px) {
+  .sortSpan {
+    gap: 8px;
+    font-size: 16px;
+    line-height: 20px;
+  }
+}
+
+.sortOption:hover .sortSpan,
+.sortOption input:checked + .sortSpan {
+  background-color: rgba(246, 184, 61, 1);
+  color: rgba(255, 255, 255, 1);
+}
+
+.iconClose {
+  display: none;
+  color: rgba(255, 255, 255, 1);
+}
+
+.sortOption input:checked + .sortSpan .iconClose {
+  display: inline-flex;
+}

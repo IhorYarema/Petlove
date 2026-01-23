@@ -6,11 +6,13 @@ import {
   fetchSex,
   fetchType,
 } from "../../redux/filters/operations";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import LocationSelect from "../LocationSelect/LocationSelect";
+import SortRadios from "../SortRadios/SortRadios";
 
 export default function NoticesFilters({ className }) {
+  const [sort, setSort] = useState("popular");
   const defaultFilter = 0;
   // redux logic
   const dispatch = useDispatch();
@@ -88,7 +90,15 @@ export default function NoticesFilters({ className }) {
         onFilterChange={handleTypeChange}
       />
       <LocationSelect />
-      <div className={css.radioFilters}></div>
+      <div className={css.radioFilters}>
+        <SortRadios
+          value={sort}
+          onChange={(val) => {
+            setSort(val);
+            // dispatch(fetchNotices({ sortBy: val }));
+          }}
+        />
+      </div>
     </div>
   );
 }
