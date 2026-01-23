@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Select from "react-select";
 import Icon from "../Icon/Icon";
 
-export default function LocationSelect({ className }) {
+export default function LocationSelect({ className, onSelectCity }) {
   const [selectedCity, setSelectedCity] = useState(null);
   const [cityKeyword, setCityKeyword] = useState("");
 
@@ -32,8 +32,7 @@ export default function LocationSelect({ className }) {
   ];
 
   const handleCityChange = (value) => {
-    console.log("Selected Type:", value);
-    // тут позже будет dispatch(fetchNotices({ category: value }))
+    onSelectCity(value);
   };
 
   return (

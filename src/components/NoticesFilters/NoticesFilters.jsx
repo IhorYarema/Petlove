@@ -6,13 +6,23 @@ import {
   fetchSex,
   fetchType,
 } from "../../redux/filters/operations";
+import { fetchNotices } from "../../redux/notices/operations";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import LocationSelect from "../LocationSelect/LocationSelect";
 import SortRadios from "../SortRadios/SortRadios";
 
 export default function NoticesFilters({ className }) {
-  const [sort, setSort] = useState("popular");
+  // const [sort, setSort] = useState("popular");
+  const [filters, setFilters] = useState({
+    category: null,
+    sex: null,
+    type: null,
+    location: null,
+    popularity: null,
+    price: null,
+    keyword: "",
+  });
   const defaultFilter = 0;
   // redux logic
   const dispatch = useDispatch();
@@ -28,6 +38,20 @@ export default function NoticesFilters({ className }) {
     dispatch(fetchSex());
     dispatch(fetchType());
   }, [dispatch]);
+
+  useEffect(() => {
+    const t = setTimeout(() => {
+      dispatch(
+        fetchNotices({
+          page: 1,
+          perPage: 10,
+          ...filters,
+        }),
+      );
+    }, 300);
+
+    return () => clearTimeout(t);
+  }, [filters, dispatch]);
 
   // OPTIONS
   const categoriesOptions = [
@@ -55,18 +79,18 @@ export default function NoticesFilters({ className }) {
   ];
 
   const handleCategoryChange = (value) => {
-    console.log("Selected category:", value);
-    // тут позже будет dispatch(fetchNotices({ category: value }))
+    setFilters((prev) => ({
+      ...prev,
+      category: value === "all" ? null : value,
+    }));
   };
 
   const handleGenderChange = (value) => {
-    console.log("Selected Gender:", value);
-    // тут позже будет dispatch(fetchNotices({ category: value }))
+    setFilters((prev) => ({ ...prev, sex: value === "all" ? null : value }));
   };
 
   const handleTypeChange = (value) => {
-    console.log("Selected Type:", value);
-    // тут позже будет dispatch(fetchNotices({ category: value }))
+    setFilters((prev) => ({ ...prev, type: value === "all" ? null : value }));
   };
 
   return (
@@ -89,14 +113,17 @@ export default function NoticesFilters({ className }) {
         defaultFilter={defaultFilter}
         onFilterChange={handleTypeChange}
       />
-      <LocationSelect />
+      <LocationSelect
+        onSelectCity={(city) =>
+          setFilters((prev) => ({ ...prev, location: city }))
+        }
+      />
       <div className={css.radioFilters}>
         <SortRadios
-          value={sort}
-          onChange={(val) => {
-            setSort(val);
-            // dispatch(fetchNotices({ sortBy: val }));
-          }}
+          sort={filters}
+          setSort={(updater) =>
+            setFilters((prev) => ({ ...prev, ...updater(prev) }))
+          }
         />
       </div>
     </div>
