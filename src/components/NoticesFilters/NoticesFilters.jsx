@@ -114,8 +114,8 @@ export default function NoticesFilters({ className }) {
         onFilterChange={handleTypeChange}
       />
       <LocationSelect
-        onSelectCity={(city) =>
-          setFilters((prev) => ({ ...prev, location: city }))
+        onSelectCity={(cityId) =>
+          setFilters((prev) => ({ ...prev, location: cityId }))
         }
       />
       <div className={css.radioFilters}>

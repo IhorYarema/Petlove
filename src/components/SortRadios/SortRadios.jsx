@@ -12,7 +12,6 @@ export default function SortRadios({ sort, setSort }) {
     { value: "expensive", label: "Expensive" },
   ];
 
-  // 🔥 ВОТ СЮДА
   const handleToggle = (group, value) => {
     setSort((prev) => ({
       ...prev,
@@ -21,40 +20,36 @@ export default function SortRadios({ sort, setSort }) {
   };
 
   return (
-    <div>
+    <div className={css.sortCont}>
       {/* POPULARITY */}
-      <div className={css.sortGroup}>
-        {popularityOptions.map((opt) => (
-          <button
-            key={opt.value}
-            type="button"
-            className={`${css.chip} ${
-              sort.popularity === opt.value ? css.active : ""
-            }`}
-            onClick={() => handleToggle("popularity", opt.value)}
-          >
-            {opt.label}
-            <Icon className={css.iconClose} name="cross-small" size={18} />
-          </button>
-        ))}
-      </div>
+      {popularityOptions.map((opt) => (
+        <button
+          key={opt.value}
+          type="button"
+          className={`${css.sortBtn} ${
+            sort.popularity === opt.value ? css.active : ""
+          }`}
+          onClick={() => handleToggle("popularity", opt.value)}
+        >
+          {opt.label}
+          <Icon className={css.iconClose} name="cross-small" size={18} />
+        </button>
+      ))}
 
       {/* PRICE */}
-      <div className={css.sortGroup}>
-        {priceOptions.map((opt) => (
-          <button
-            key={opt.value}
-            type="button"
-            className={`${css.chip} ${
-              sort.price === opt.value ? css.active : ""
-            }`}
-            onClick={() => handleToggle("price", opt.value)}
-          >
-            {opt.label}
-            <Icon className={css.iconClose} name="cross-small" size={18} />
-          </button>
-        ))}
-      </div>
+      {priceOptions.map((opt) => (
+        <button
+          key={opt.value}
+          type="button"
+          className={`${css.sortBtn} ${
+            sort.price === opt.value ? css.active : ""
+          }`}
+          onClick={() => handleToggle("price", opt.value)}
+        >
+          {opt.label}
+          <Icon className={css.iconClose} name="cross-small" size={18} />
+        </button>
+      ))}
     </div>
   );
 }

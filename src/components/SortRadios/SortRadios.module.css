@@ -1,21 +1,27 @@
-.sortGroup {
+.sortCont {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
 }
 
+/* .sortGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+} */
+
 @media (min-width: 768px) {
-  .sortGroup {
+  .sortCont {
     gap: 8px;
     flex-wrap: nowrap;
   }
 }
 
-.sortOption input {
+/* .sortOption input {
   display: none;
-}
+} */
 
-.sortSpan {
+.sortBtn {
   display: inline-flex;
   flex-wrap: nowrap;
   align-items: center;
@@ -33,15 +39,15 @@
 }
 
 @media (min-width: 768px) {
-  .sortSpan {
+  .sortBtn {
     gap: 8px;
     font-size: 16px;
     line-height: 20px;
   }
 }
 
-.sortOption:hover .sortSpan,
-.sortOption input:checked + .sortSpan {
+.sortBtn:hover,
+.sortBtn.active {
   background-color: rgba(246, 184, 61, 1);
   color: rgba(255, 255, 255, 1);
 }
@@ -51,6 +57,6 @@
   color: rgba(255, 255, 255, 1);
 }
 
-.sortOption input:checked + .sortSpan .iconClose {
+.sortBtn.active .iconClose {
   display: inline-flex;
 }

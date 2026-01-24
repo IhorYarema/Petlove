@@ -24,16 +24,10 @@ export default function LocationSelect({ className, onSelectCity }) {
     return () => clearTimeout(timeout);
   }, [cityKeyword, dispatch]);
 
-  const citiesOptions = [
-    ...cities.map((opt) => ({
-      value: `${opt.stateEn}, ${opt.cityEn}`,
-      label: `${opt.stateEn}, ${opt.cityEn}`,
-    })),
-  ];
-
-  const handleCityChange = (value) => {
-    onSelectCity(value);
-  };
+  const citiesOptions = cities.map((opt) => ({
+    value: opt._id,
+    label: `${opt.stateEn}, ${opt.cityEn}`,
+  }));
 
   return (
     <div className={`${css.inputContainer} ${className}`}>
@@ -42,7 +36,7 @@ export default function LocationSelect({ className, onSelectCity }) {
         value={selectedCity}
         onChange={(option) => {
           setSelectedCity(option);
-          handleCityChange(option.value);
+          onSelectCity(option ? option.value : null);
         }}
         onInputChange={(value, { action }) => {
           if (action === "input-change") {
@@ -85,6 +79,7 @@ export default function LocationSelect({ className, onSelectCity }) {
         onClick={() => {
           setSelectedCity(null);
           setCityKeyword("");
+          onSelectCity(null);
         }}
         type="button"
       >

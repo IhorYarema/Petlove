@@ -22,8 +22,8 @@ export const fetchNotices = createAsyncThunk(
 
       if (category) params.category = category;
       if (sex) params.sex = sex;
-      if (type) params.type = type;
-      if (location) params.location = location;
+      if (type) params.species = type;
+      if (location) params.cityId = location;
       if (keyword) params.keyword = keyword;
 
       // 🔥 СОРТИРОВКА
