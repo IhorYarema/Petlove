@@ -13,16 +13,19 @@ import LocationSelect from "../LocationSelect/LocationSelect";
 import SortRadios from "../SortRadios/SortRadios";
 
 export default function NoticesFilters({ className }) {
-  // const [sort, setSort] = useState("popular");
   const [filters, setFilters] = useState({
     category: null,
     sex: null,
     type: null,
     location: null,
-    popularity: null,
-    price: null,
     keyword: "",
   });
+
+  const [sort, setSort] = useState({
+    popularity: null,
+    price: null,
+  });
+
   const defaultFilter = 0;
   // redux logic
   const dispatch = useDispatch();
@@ -32,6 +35,10 @@ export default function NoticesFilters({ className }) {
   const types = useSelector((state) => state.filters.types);
 
   // const loading = useSelector((state) => state.filters.loading);
+
+  useEffect(() => {
+    console.log("FILTERS CHANGED:", filters);
+  }, [filters]);
 
   useEffect(() => {
     dispatch(fetchCategories());
@@ -46,12 +53,13 @@ export default function NoticesFilters({ className }) {
           page: 1,
           perPage: 10,
           ...filters,
+          ...sort,
         }),
       );
     }, 300);
 
     return () => clearTimeout(t);
-  }, [filters, dispatch]);
+  }, [filters, sort, dispatch]);
 
   // OPTIONS
   const categoriesOptions = [
@@ -119,12 +127,7 @@ export default function NoticesFilters({ className }) {
         }
       />
       <div className={css.radioFilters}>
-        <SortRadios
-          sort={filters}
-          setSort={(updater) =>
-            setFilters((prev) => ({ ...prev, ...updater(prev) }))
-          }
-        />
+        <SortRadios sort={sort} setSort={setSort} />
       </div>
     </div>
   );

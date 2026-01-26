@@ -43,7 +43,7 @@ export const fetchCities = createAsyncThunk(
     try {
       if (!keyword || keyword.length < 3) return [];
 
-      const { data } = await api.get("/cities", {
+      const { data } = await api.get("/cities/locations", {
         params: { keyword },
       });
 

@@ -23,15 +23,19 @@ export const fetchNotices = createAsyncThunk(
       if (category) params.category = category;
       if (sex) params.sex = sex;
       if (type) params.species = type;
-      if (location) params.cityId = location;
+      if (location) params.locationId = location;
       if (keyword) params.keyword = keyword;
 
       // 🔥 СОРТИРОВКА
-      if (popularity === "popular") params.sortBy = "popularity";
-      if (popularity === "unpopular") params.sortBy = "-popularity";
+      let sortParams = [];
 
-      if (price === "cheap") params.sortBy = "price";
-      if (price === "expensive") params.sortBy = "-price";
+      if (popularity === "popular") sortParams.push("popularity");
+      if (popularity === "unpopular") sortParams.push("-popularity");
+
+      if (price === "cheap") sortParams.push("price");
+      if (price === "expensive") sortParams.push("-price");
+
+      if (sortParams.length) params.sortBy = sortParams.join(",");
 
       const { data } = await api.get("/notices", {
         params: {
