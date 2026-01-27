@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import LocationSelect from "../LocationSelect/LocationSelect";
 import SortRadios from "../SortRadios/SortRadios";
+import { useCallback } from "react";
 
 export default function NoticesFilters({ className }) {
   const [filters, setFilters] = useState({
@@ -101,9 +102,14 @@ export default function NoticesFilters({ className }) {
     setFilters((prev) => ({ ...prev, type: value === "all" ? null : value }));
   };
 
+  const handleKeywordChange = useCallback((value) => {
+    setFilters((prev) => ({ ...prev, keyword: value || null }));
+  }, []);
+
   return (
     <div className={`${css.filters} ${className}`}>
-      <SearchField />
+      <SearchField value={filters.keyword} onChange={handleKeywordChange} />
+
       <div className={css.selectCont}>
         <SelectComponent
           options={categoriesOptions}
