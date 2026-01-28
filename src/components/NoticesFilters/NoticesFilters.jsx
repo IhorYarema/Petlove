@@ -38,10 +38,6 @@ export default function NoticesFilters({ className }) {
   // const loading = useSelector((state) => state.filters.loading);
 
   useEffect(() => {
-    console.log("FILTERS CHANGED:", filters);
-  }, [filters]);
-
-  useEffect(() => {
     dispatch(fetchCategories());
     dispatch(fetchSex());
     dispatch(fetchType());
@@ -95,9 +91,11 @@ export default function NoticesFilters({ className }) {
   };
 
   const handleGenderChange = (value) => {
-    setFilters((prev) => ({ ...prev, sex: value === "all" ? null : value }));
+    setFilters((prev) => ({
+      ...prev,
+      sex: value === "all" ? null : value,
+    }));
   };
-
   const handleTypeChange = (value) => {
     setFilters((prev) => ({ ...prev, type: value === "all" ? null : value }));
   };
@@ -108,29 +106,38 @@ export default function NoticesFilters({ className }) {
 
   return (
     <div className={`${css.filters} ${className}`}>
-      <SearchField value={filters.keyword} onChange={handleKeywordChange} />
+      <SearchField value={filters.keyword} onChange={handleKeywordChange} className={css.selectKeyWord}/>
 
       <div className={css.selectCont}>
         <SelectComponent
+          value={filters.category}
           options={categoriesOptions}
-          defaultFilter={defaultFilter}
+          placeholder="Category"
           onFilterChange={handleCategoryChange}
+          className={css.selectCategory}
         />
         <SelectComponent
+          value={filters.sex}
           options={sexOptions}
           defaultFilter={defaultFilter}
+          placeholder="By gender"
           onFilterChange={handleGenderChange}
+          className={css.selectSex}
         />
       </div>
       <SelectComponent
+        value={filters.type}
         options={typesOptions}
         defaultFilter={defaultFilter}
+        placeholder="By type"
         onFilterChange={handleTypeChange}
+        className={css.selectType}
       />
       <LocationSelect
         onSelectCity={(cityId) =>
           setFilters((prev) => ({ ...prev, location: cityId }))
         }
+        className={css.selectLocation}
       />
       <div className={css.radioFilters}>
         <SortRadios sort={sort} setSort={setSort} />

@@ -23,3 +23,32 @@
   line-height: 18px;
   letter-spacing: -0.03em;
 }
+
+@media (min-width: 768px) {
+  .reactSelectContainer {
+    font-size: 16px;
+    line-height: 20px;
+  }
+}
+
+.selectWrapper {
+  position: relative;
+}
+
+.iconChevron {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+}
+
+.reactSelectContainer:active,
+.iconChevron {
+  transform: rotateX("180");
+}
+
+@media (min-width: 768px) {
+  .iconChevron {
+    top: 15px;
+    right: 14px;
+  }
+}
