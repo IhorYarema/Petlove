@@ -35,14 +35,16 @@ export default function RegisterForm() {
   const togglePassword = () => setShowPassword((p) => !p);
 
   const handleFormSubmit = async (data) => {
-    const result = await dispatch(registerUser(data));
+    const { confirmPassword, ...userData } = data;
+
+    const result = await dispatch(registerUser(userData)); // ✅
 
     if (result.error) {
-      toast.error(result.payload || "Login failed");
+      toast.error(result.payload || "Registration failed");
       return;
     }
 
-    toast.success("Login successful!");
+    toast.success("Registration successful!");
     navigate("/home");
   };
 
@@ -93,7 +95,7 @@ export default function RegisterForm() {
           className={`${css.input} ${css.lastInput}`}
           type={showPassword ? "text" : "password"}
           placeholder="Confirm password"
-          {...register("password")}
+          {...register("confirmPassword")}
         />
         <button className={css.btnIcon} type="button" onClick={togglePassword}>
           <Icon

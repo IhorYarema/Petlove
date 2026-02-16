@@ -17,9 +17,10 @@ export const registerUser = createAsyncThunk(
       setAuthHeader(response.data.token);
       return response.data;
     } catch (error) {
+      console.log("Server error:", error.response);
       return rejectWithValue(error.response?.data || error.message);
     }
-  }
+  },
 );
 
 // LOGIN
@@ -33,7 +34,7 @@ export const loginUser = createAsyncThunk(
     } catch (error) {
       return rejectWithValue(error.response?.data || error.message);
     }
-  }
+  },
 );
 
 // LOGOUT
@@ -54,7 +55,7 @@ export const logoutUserThunk = createAsyncThunk(
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response?.data || error.message);
     }
-  }
+  },
 );
 
 // FETCH CURRENT USER
@@ -75,11 +76,11 @@ export const fetchCurrentUser = createAsyncThunk(
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response?.data || error.message);
     }
-  }
+  },
 );
 
 export const fetchCurrentUserFull = createAsyncThunk(
-  "auth/fetchCurrentUser",
+  "auth/fetchCurrentUserFull",
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
     const token = state.auth.token;
@@ -95,5 +96,5 @@ export const fetchCurrentUserFull = createAsyncThunk(
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response?.data || error.message);
     }
-  }
+  },
 );

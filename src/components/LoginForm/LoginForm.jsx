@@ -3,11 +3,11 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { registerUser } from "../../redux/auth/operations";
+import { loginUser } from "../../redux/auth/operations";
 import { toast } from "react-toastify";
 import { NavLink, useNavigate } from "react-router-dom";
 import Icon from "../Icon/Icon";
-import schema from "../../schemas/signUpSchema";
+import schema from "../../schemas/signInSchema";
 import Title from "../Title/Title";
 
 export default function LoginForm() {
@@ -35,7 +35,7 @@ export default function LoginForm() {
   const togglePassword = () => setShowPassword((p) => !p);
 
   const handleFormSubmit = async (data) => {
-    const result = await dispatch(registerUser(data));
+    const result = await dispatch(loginUser(data));
 
     if (result.error) {
       toast.error(result.payload || "Login failed");
