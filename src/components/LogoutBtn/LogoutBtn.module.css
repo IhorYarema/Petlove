@@ -5,6 +5,8 @@
   display: flex;
   justify-content: center;
   padding: 12px 60px;
+  border-radius: 30px;
+  white-space: nowrap;
 
   font-weight: 700;
   font-size: 14px;

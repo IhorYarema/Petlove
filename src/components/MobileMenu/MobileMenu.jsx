@@ -3,9 +3,15 @@ import Nav from "../Nav/Nav";
 import AuthNav from "../AuthNav/AuthNav";
 import Icon from "../Icon/Icon";
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import LogoutBtn from "../LogoutBtn/LogoutBtn";
+import { toast } from "react-toastify";
+import { logoutUserThunk } from "../../redux/auth/operations";
+import { useNavigate } from "react-router-dom";
 
 export default function MobileMenu({ setOpen }) {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const [isClosing, setIsClosing] = useState(false);
 
@@ -15,6 +21,18 @@ export default function MobileMenu({ setOpen }) {
     setTimeout(() => {
       setOpen(false);
     }, 300);
+  };
+
+  const handleLogout = async () => {
+    try {
+      await dispatch(logoutUserThunk()).unwrap();
+      toast.success("Logout successfull!");
+      // dispatch(resetFilters());
+    } catch (error) {
+      toast.error("Logout error " + error);
+    } finally {
+      navigate("/login");
+    }
   };
 
   return (
