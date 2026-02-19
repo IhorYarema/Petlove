@@ -17,16 +17,6 @@ aside .navGroup .link {
   line-height: 18px;
 }
 
-aside .navYellow .link {
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  color: rgba(255, 255, 255, 1);
-}
-
-aside .navWhite .link {
-  border: 1px solid rgba(38, 38, 38, 0.15);
-  color: rgba(38, 38, 38, 1);
-}
-
 @media (min-width: 768px) {
   aside .navGroup .link {
     width: 120px;
@@ -36,7 +26,7 @@ aside .navWhite .link {
   }
 }
 
-aside .navWhite .active {
+.navWhite .active {
   border: 1px solid rgba(246, 184, 61, 1);
 }
 
@@ -58,20 +48,27 @@ aside .navWhite .active {
     letter-spacing: -0.03em;
   }
 }
-/* 
-.navWhite .link {
-  border: 1px solid rgba(38, 38, 38, 0.15);
-
-  color: rgba(38, 38, 38, 1);
-} */
 
 .navWhite .active {
   border: 1px solid rgba(246, 184, 61, 1);
 }
 
-/* YELLOW */
-
-/* .navYellow .link {
-  border: 1px solid rgba(255, 255, 255, 0.4);
+aside .navYellow .link {
+  border: 1px solid rgba(255, 255, 255, 0.5);
   color: rgba(255, 255, 255, 1);
-} */
+}
+
+header .navYellow .link {
+  border: 1px solid rgba(38, 38, 38, 0.15);
+  color: rgba(38, 38, 38, 1);
+}
+
+aside .navWhite .link {
+  border: 1px solid rgba(38, 38, 38, 0.15);
+  color: rgba(38, 38, 38, 1);
+}
+
+header .navWhite .link {
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 1);
+}
