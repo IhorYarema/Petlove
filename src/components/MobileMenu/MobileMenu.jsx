@@ -7,13 +7,23 @@ import { useSelector, useDispatch } from "react-redux";
 import LogoutBtn from "../LogoutBtn/LogoutBtn";
 import { toast } from "react-toastify";
 import { logoutUserThunk } from "../../redux/auth/operations";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 export default function MobileMenu({ setOpen }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const [isClosing, setIsClosing] = useState(false);
+
+  const location = useLocation();
+  const isHome = location.pathname === "/home";
+  const isYellow = location.pathname !== "/home";
+
+  const menuClass = `
+  ${css.menu}
+  ${isYellow ? css.menuYellow : ""}
+  ${isHome ? css.menuHome : ""}
+`;
 
   const closeMenu = () => {
     setIsClosing(true);
@@ -38,7 +48,7 @@ export default function MobileMenu({ setOpen }) {
   return (
     <div className={css.backdrop} onClick={closeMenu}>
       <aside
-        className={`${css.menu} ${isClosing ? css.closing : ""}`}
+        className={`${menuClass} ${isClosing ? css.closing : ""}`}
         onClick={(e) => e.stopPropagation()}
       >
         <button className={css.closeBtn} onClick={closeMenu}>

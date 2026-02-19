@@ -14,3 +14,7 @@
 .iconMenuWhite {
   color: rgba(255, 255, 255, 1);
 }
+
+button {
+  z-index: 3;
+}

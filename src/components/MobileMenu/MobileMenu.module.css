@@ -19,6 +19,10 @@
   right: 0;
 }
 
+.menuYellow {
+  background: rgba(246, 184, 61, 1);
+}
+
 @media (min-width: 768px) {
   .menu {
     width: 374px;
@@ -71,6 +75,10 @@
 
 .iconClose {
   color: rgba(38, 38, 38, 1);
+}
+
+.menuYellow .iconClose {
+  color: rgba(255, 255, 255, 1);
 }
 
 @media (min-width: 768px) {

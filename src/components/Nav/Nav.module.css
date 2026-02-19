@@ -6,7 +6,6 @@ aside .navGroup {
 }
 
 aside .navGroup .link {
-  border: 1px solid rgba(38, 38, 38, 0.15);
   padding: 15px 0;
   width: 119px;
   display: flex;
@@ -16,6 +15,15 @@ aside .navGroup .link {
   font-weight: 500;
   font-size: 14px;
   line-height: 18px;
+}
+
+aside .navYellow .link {
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 1);
+}
+
+aside .navWhite .link {
+  border: 1px solid rgba(38, 38, 38, 0.15);
   color: rgba(38, 38, 38, 1);
 }
 
@@ -50,12 +58,12 @@ aside .navWhite .active {
     letter-spacing: -0.03em;
   }
 }
-
+/* 
 .navWhite .link {
   border: 1px solid rgba(38, 38, 38, 0.15);
 
   color: rgba(38, 38, 38, 1);
-}
+} */
 
 .navWhite .active {
   border: 1px solid rgba(246, 184, 61, 1);
@@ -63,7 +71,7 @@ aside .navWhite .active {
 
 /* YELLOW */
 
-.navYellow .link {
+/* .navYellow .link {
   border: 1px solid rgba(255, 255, 255, 0.4);
   color: rgba(255, 255, 255, 1);
-}
+} */
