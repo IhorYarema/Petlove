@@ -3,6 +3,8 @@ import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Loader from "./components/Loader/Loader";
 import NotFound from "./pages/NotFound/NotFound";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchCurrentUser } from "./redux/auth/operations";
 
 import css from "./App.module.css";
 import { Toaster } from "react-hot-toast";
@@ -13,12 +15,21 @@ const NewsPage = lazy(() => import("./pages/NewsPage/NewsPage"));
 const FriendsPage = lazy(() => import("./pages/FriendsPage/FriendsPage"));
 const NoticesPage = lazy(() => import("./pages/NoticesPage/NoticesPage"));
 
-const RegisterPage = lazy(() =>
-  import("./pages/RegistrationPage/RegistrationPage")
+const RegisterPage = lazy(
+  () => import("./pages/RegistrationPage/RegistrationPage"),
 );
 const LoginPage = lazy(() => import("./pages/LoginPage/LoginPage"));
 
 function App() {
+  const dispatch = useDispatch();
+  const token = useSelector((state) => state.auth.token);
+
+  useEffect(() => {
+    if (token) {
+      dispatch(fetchCurrentUser());
+    }
+  }, [dispatch, token]);
+
   return (
     <div>
       <Header />
