@@ -16,8 +16,12 @@ export default function Nav({ closeMenu = () => {}, className = "" }) {
       <NavLink
         to="/news"
         end
-        className={({ isActive }) =>
-          `${css.link} ${css.news} ${isActive ? css.active : ""}`
+        className={
+          ({ isActive }) =>
+            isActive
+              ? `${css.link} ${css.news} ${css.active}`
+              : `${css.link} ${css.news}`
+          // `${css.link} ${css.news} ${isActive ? css.active : ""}`
         }
         onClick={closeMenu}
       >
@@ -26,8 +30,12 @@ export default function Nav({ closeMenu = () => {}, className = "" }) {
       <NavLink
         to="/notices"
         end
-        className={({ isActive }) =>
-          `${css.link} ${css.notices} ${isActive ? css.active : ""}`
+        className={
+          ({ isActive }) =>
+            isActive
+              ? `${css.link} ${css.notices} ${css.active}`
+              : `${css.link} ${css.notices}`
+          // `${css.link} ${css.notices} ${isActive ? css.active : ""}`
         }
         onClick={closeMenu}
       >
@@ -36,8 +44,12 @@ export default function Nav({ closeMenu = () => {}, className = "" }) {
       <NavLink
         to="/friends"
         end
-        className={({ isActive }) =>
-          `${css.link} ${css.friends} ${isActive ? css.active : ""}`
+        className={
+          ({ isActive }) =>
+            isActive
+              ? `${css.link} ${css.friends} ${css.active}`
+              : `${css.link} ${css.friends}`
+          // `${css.link} ${css.friends} ${isActive ? css.active : ""}`
         }
         onClick={closeMenu}
       >

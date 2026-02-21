@@ -26,8 +26,12 @@ aside .navGroup .link {
   }
 }
 
-.navWhite .active {
+header .navWhite .active {
   border: 1px solid rgba(246, 184, 61, 1);
+}
+
+header .navYellow .active {
+  border: 1px solid rgba(255, 255, 255, 1);
 }
 
 /* FOR DESKTOP HEADER */
@@ -49,11 +53,11 @@ aside .navGroup .link {
   }
 }
 
-.navWhite .active {
+header aside .navWhite .active {
   border: 1px solid rgba(246, 184, 61, 1);
 }
 
-aside .navYellow .link {
+header aside .navYellow .link {
   border: 1px solid rgba(255, 255, 255, 0.5);
   color: rgba(255, 255, 255, 1);
 }
@@ -63,7 +67,11 @@ header .navYellow .link {
   color: rgba(38, 38, 38, 1);
 }
 
-aside .navWhite .link {
+header aside .navYellow .active {
+  border: 1px solid rgba(255, 255, 255, 1);
+}
+
+header aside .navWhite .link {
   border: 1px solid rgba(38, 38, 38, 0.15);
   color: rgba(38, 38, 38, 1);
 }
