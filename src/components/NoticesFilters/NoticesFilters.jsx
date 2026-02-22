@@ -106,39 +106,45 @@ export default function NoticesFilters({ className }) {
 
   return (
     <div className={`${css.filters} ${className}`}>
-      <SearchField value={filters.keyword} onChange={handleKeywordChange} className={css.selectKeyWord}/>
-
-      <div className={css.selectCont}>
-        <SelectComponent
-          value={filters.category}
-          options={categoriesOptions}
-          placeholder="Category"
-          onFilterChange={handleCategoryChange}
-          className={css.selectCategory}
+      <div className={css.filtersInput}>
+        <SearchField
+          value={filters.keyword}
+          onChange={handleKeywordChange}
+          className={css.selectKeyWord}
         />
+
+        <div className={css.selectCont}>
+          <SelectComponent
+            value={filters.category}
+            options={categoriesOptions}
+            placeholder="Category"
+            onFilterChange={handleCategoryChange}
+            className={css.selectCategory}
+          />
+          <SelectComponent
+            value={filters.sex}
+            options={sexOptions}
+            defaultFilter={defaultFilter}
+            placeholder="By gender"
+            onFilterChange={handleGenderChange}
+            className={css.selectSex}
+          />
+        </div>
         <SelectComponent
-          value={filters.sex}
-          options={sexOptions}
+          value={filters.type}
+          options={typesOptions}
           defaultFilter={defaultFilter}
-          placeholder="By gender"
-          onFilterChange={handleGenderChange}
-          className={css.selectSex}
+          placeholder="By type"
+          onFilterChange={handleTypeChange}
+          className={css.selectType}
+        />
+        <LocationSelect
+          onSelectCity={(cityId) =>
+            setFilters((prev) => ({ ...prev, location: cityId }))
+          }
+          className={css.selectLocation}
         />
       </div>
-      <SelectComponent
-        value={filters.type}
-        options={typesOptions}
-        defaultFilter={defaultFilter}
-        placeholder="By type"
-        onFilterChange={handleTypeChange}
-        className={css.selectType}
-      />
-      <LocationSelect
-        onSelectCity={(cityId) =>
-          setFilters((prev) => ({ ...prev, location: cityId }))
-        }
-        className={css.selectLocation}
-      />
       <div className={css.radioFilters}>
         <SortRadios sort={sort} setSort={setSort} />
       </div>
