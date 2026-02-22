@@ -64,3 +64,15 @@
   padding-top: 20px;
   width: 100%;
 }
+
+.selectCategory {
+  z-index: 6;
+}
+
+.selectSex {
+  z-index: 6;
+}
+
+.selectType {
+  z-index: 5;
+}

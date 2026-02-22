@@ -2,6 +2,7 @@
 .inputContainer {
   width: 100%;
   position: relative;
+  z-index: 4;
 }
 
 /* @media (min-width: 768px) {

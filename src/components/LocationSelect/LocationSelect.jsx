@@ -74,17 +74,19 @@ export default function LocationSelect({ className, onSelectCity }) {
         }}
       />
       <Icon name="search" size={18} className={css.iconSearch} />
-      <button
-        className={css.closeBtn}
-        onClick={() => {
-          setSelectedCity(null);
-          setCityKeyword("");
-          onSelectCity(null);
-        }}
-        type="button"
-      >
-        <Icon className={css.iconClose} name="cross-small" size={18} />
-      </button>
+      {(selectedCity || cityKeyword) && (
+        <button
+          className={css.closeBtn}
+          onClick={() => {
+            setSelectedCity(null);
+            setCityKeyword("");
+            onSelectCity(null);
+          }}
+          type="button"
+        >
+          <Icon className={css.iconClose} name="cross-small" size={18} />
+        </button>
+      )}
     </div>
   );
 }
