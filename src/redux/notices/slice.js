@@ -31,8 +31,23 @@ const noticesSlice = createSlice({
         state.loading = false;
 
         const data = action.payload;
+        let results = data.results;
 
-        state.items = data.results;
+        const sortBy = action.meta.arg.sortBy;
+
+        if (sortBy) {
+          results = [...results].sort((a, b) => {
+            const field = sortBy.replace("-", "");
+            const direction = sortBy.startsWith("-") ? -1 : 1;
+
+            const aValue = a[field] ?? 0;
+            const bValue = b[field] ?? 0;
+
+            return (aValue - bValue) * direction;
+          });
+        }
+
+        state.items = results;
         state.page = data.page;
         state.totalPages = data.totalPages;
         state.perPage = data.perPage;

@@ -22,10 +22,7 @@ export default function NoticesFilters({ className }) {
     keyword: "",
   });
 
-  const [sort, setSort] = useState({
-    popularity: null,
-    price: null,
-  });
+  const [sort, setSort] = useState(null);
 
   const defaultFilter = 0;
   // redux logic
@@ -48,9 +45,9 @@ export default function NoticesFilters({ className }) {
       dispatch(
         fetchNotices({
           page: 1,
-          perPage: 10,
+          limit: 10,
           ...filters,
-          ...sort,
+          sortBy: sort || undefined,
         }),
       );
     }, 300);

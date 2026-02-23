@@ -2,52 +2,28 @@ import css from "./SortRadios.module.css";
 import Icon from "../Icon/Icon";
 
 export default function SortRadios({ sort, setSort }) {
-  const popularityOptions = [
-    { value: "popular", label: "Popular" },
-    { value: "unpopular", label: "Unpopular" },
+  const options = [
+    { value: "-popularity", label: "Popular" },
+    { value: "popularity", label: "Unpopular" },
+    { value: "price", label: "Cheap" },
+    { value: "-price", label: "Expensive" },
   ];
-
-  const priceOptions = [
-    { value: "cheap", label: "Cheap" },
-    { value: "expensive", label: "Expensive" },
-  ];
-
-  const handleToggle = (group, value) => {
-    setSort((prev) => ({
-      ...prev,
-      [group]: prev[group] === value ? null : value,
-    }));
-  };
 
   return (
     <div className={css.sortCont}>
-      {/* POPULARITY */}
-      {popularityOptions.map((opt) => (
+      {options.map((opt) => (
         <button
           key={opt.value}
           type="button"
-          className={`${css.sortBtn} ${
-            sort.popularity === opt.value ? css.active : ""
-          }`}
-          onClick={() => handleToggle("popularity", opt.value)}
+          className={`${css.sortBtn} ${sort === opt.value ? css.active : ""}`}
+          onClick={() =>
+            setSort((prev) => (prev === opt.value ? null : opt.value))
+          }
         >
           {opt.label}
-          <Icon className={css.iconClose} name="cross-small" size={18} />
-        </button>
-      ))}
-
-      {/* PRICE */}
-      {priceOptions.map((opt) => (
-        <button
-          key={opt.value}
-          type="button"
-          className={`${css.sortBtn} ${
-            sort.price === opt.value ? css.active : ""
-          }`}
-          onClick={() => handleToggle("price", opt.value)}
-        >
-          {opt.label}
-          <Icon className={css.iconClose} name="cross-small" size={18} />
+          {sort === opt.value && (
+            <Icon className={css.iconClose} name="cross-small" size={18} />
+          )}
         </button>
       ))}
     </div>
