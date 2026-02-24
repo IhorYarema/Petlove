@@ -1,21 +1,16 @@
 import css from "./NoticesItem.module.css";
 import Icon from "../Icon/Icon";
 import ModalAttention from "../ModalAttention/ModalAttention";
+import ModalNotice from "../ModalNotice/ModalNotice";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 
 export default function NoticesItem({ item }) {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalType, setModalType] = useState(null);
 
   const handleLearnMore = () => {
-    if (!isLoggedIn) {
-      setIsModalOpen(true);
-      return;
-    }
-
-    // логика для авторизованного юзера
-    console.log("Open notice details");
+    setModalType(isLoggedIn ? "notice" : "attention");
   };
 
   return (
@@ -66,11 +61,12 @@ export default function NoticesItem({ item }) {
           />
         </button>
       </div>
-      {isModalOpen && (
-        <ModalAttention
-          className={css.modal}
-          onClose={() => setIsModalOpen(false)}
-        />
+      {modalType === "attention" && (
+        <ModalAttention onClose={() => setModalType(null)} />
+      )}
+
+      {modalType === "notice" && (
+        <ModalNotice item={item} onClose={() => setModalType(null)} />
       )}
     </div>
   );

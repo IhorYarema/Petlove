@@ -44,7 +44,7 @@
   right: 20px;
 }
 
-.petAvatar {
+.img {
   background-color: rgba(255, 244, 223, 1);
   border-radius: 50%;
   width: 80px;
@@ -93,44 +93,6 @@
 .btnsCont {
   display: flex;
   gap: 8px;
-}
-
-.link {
-  display: flex;
-  justify-content: center;
-  border-radius: 30px;
-
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 18px;
-  letter-spacing: -0.03em;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-
-@media (min-width: 768px) {
-  .link {
-    font-size: 16px;
-    line-height: 20px;
-  }
-}
-
-.login {
-  background-color: rgba(246, 184, 61, 1);
-  color: rgba(255, 255, 255, 1);
-  padding: 12px 48px;
-}
-
-@media (min-width: 768px) {
-  .login {
-    padding: 14px 48px;
-  }
-}
-
-.register {
-  background-color: rgba(255, 244, 223, 1);
-  color: rgba(246, 184, 61, 1);
-  padding: 12px 24px;
 }
 
 /* ANIMATION */
