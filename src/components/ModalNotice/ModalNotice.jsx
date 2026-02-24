@@ -34,7 +34,12 @@ export default function ModalNotice({ item, className, onClose }) {
         <button className={css.closeBtn} onClick={closeModal}>
           <Icon className={css.iconClose} name="cross-small" size={24} />
         </button>
-        <img src={item.imgURL} alt="Notice's Image" className={css.img} />
+        <div className={css.avatarCont}>
+          <img src={item.imgURL} alt="Notice's Image" className={css.img} />
+          <div className={css.categoryCont}>
+            <p className={css.categoryText}>{item.category}</p>
+          </div>
+        </div>
         <div className={css.upperCont}>
           <h3 className={css.title}>{item.title}</h3>
           <div className={css.ratingCont}>
@@ -58,10 +63,6 @@ export default function ModalNotice({ item, className, onClose }) {
           <p className={css.info}>
             <span>Species </span>
             {item.species}
-          </p>
-          <p className={css.info}>
-            <span>Category </span>
-            {item.category}
           </p>
         </div>
         <p className={css.comment}>{item.comment}</p>
