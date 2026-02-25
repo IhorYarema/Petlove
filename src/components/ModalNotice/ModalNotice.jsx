@@ -69,13 +69,13 @@ export default function ModalNotice({ item, className, onClose }) {
         <p className={css.price}>
           {item.price ? "$" + item.price : "Price needs clarification"}
         </p>
-        <button className={css.favBtn}>
-          <Icon
-            className={`${css.iconHeart} ${css.iconHeart}`}
-            name="heart"
-            size={18}
-          />
-        </button>
+        <div className={css.btnsCont}>
+          <button className={css.favBtn}>
+            Add to
+            <Icon className={`${css.iconHeart}`} name="heart" size={18} />
+          </button>
+          <button className={css.contactBtn}>Contact</button>
+        </div>
       </div>
     </div>
   );
