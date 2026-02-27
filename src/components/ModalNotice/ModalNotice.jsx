@@ -43,7 +43,31 @@ export default function ModalNotice({ item, className, onClose }) {
         <div className={css.upperCont}>
           <h3 className={css.title}>{item.title}</h3>
           <div className={css.ratingCont}>
-            <Icon className={css.iconStar} name="star" size={16} />
+            <Icon
+              className={!item.popularity ? css.iconStarGrey : css.iconStar}
+              name="star"
+              size={16}
+            />
+            <Icon
+              className={item.popularity > 1 ? css.iconStar : css.iconStarGrey}
+              name="star"
+              size={16}
+            />
+            <Icon
+              className={item.popularity > 2 ? css.iconStar : css.iconStarGrey}
+              name="star"
+              size={16}
+            />
+            <Icon
+              className={item.popularity > 3 ? css.iconStar : css.iconStarGrey}
+              name="star"
+              size={16}
+            />
+            <Icon
+              className={item.popularity > 4 ? css.iconStar : css.iconStarGrey}
+              name="star"
+              size={16}
+            />
             <p className={css.info}>{item.popularity}</p>
           </div>
         </div>
