@@ -1,12 +1,62 @@
 .container {
   display: flex;
   justify-content: center;
+  gap: 11px;
 }
 
-button {
+.container button,
+.dots {
   border-radius: 50%;
   border: 1px solid rgba(38, 38, 38, 0.05);
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 40px;
+  height: 40px;
+
+  background: transparent;
+  transition:
+    background 0.2s,
+    color 0.2s;
+}
+
+.container button:hover:not(:disabled) {
+  background: rgba(246, 184, 61, 1);
+  color: rgba(255, 255, 255, 1);
+}
+
+.container .active {
+  background: rgba(246, 184, 61, 1);
+  color: rgba(255, 255, 255, 1);
+  border-color: rgba(246, 184, 61, 1);
+}
+
+.firstCont,
+.lastCont {
+  display: flex;
+  gap: 6px;
+}
+
+.middleCont {
+  display: flex;
+  gap: 10px;
+}
+
+.btnPagFirst,
+.btnPagBefore,
+.btnPagNext,
+.btnPagLast {
+  border: 1px solid rgba(38, 38, 38, 0.2);
+}
+
+.btnPagFirst:not(:disabled),
+.btnPagBefore:not(:disabled),
+.btnPagNext:not(:disabled),
+.btnPagLast:not(:disabled) {
+  border: 1px solid rgba(38, 38, 38, 0.2);
+}
+
+.iconPagNext,
+.iconPagLast {
+  transform: rotateY(180deg);
 }

@@ -27,6 +27,7 @@ export default function NoticesPage() {
           totalPages={totalPages}
           perPage={perPage}
           onPageChange={handlePageChange}
+          className={css.pagination}
         />
       </div>
     </section>
