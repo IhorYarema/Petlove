@@ -49,3 +49,13 @@
     margin-bottom: 60px;
   }
 }
+
+.pagination {
+  margin-top: 44px;
+}
+
+@media (min-width: 768px) {
+  .pagination {
+    margin-top: 60px;
+  }
+}
