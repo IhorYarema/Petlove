@@ -2,6 +2,19 @@
   display: flex;
   justify-content: center;
   gap: 5px;
+
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+@media (min-width: 768px) {
+  .container {
+    gap: 24px;
+
+    font-size: 18px;
+    line-height: 22px;
+  }
 }
 
 .container button,
@@ -18,6 +31,14 @@
   transition:
     background 0.2s,
     color 0.2s;
+}
+
+@media (min-width: 768px) {
+  .container button,
+  .dots {
+    width: 44px;
+    height: 44px;
+  }
 }
 
 .container button:hover:not(:disabled) {
@@ -37,11 +58,22 @@
   gap: 3px;
 }
 
+@media (min-width: 768px) {
+  .firstCont,
+  .lastCont {
+    gap: 8px;
+  }
+}
+
 .middleCont {
   display: flex;
   gap: 3px;
-  /* min-width: 0; 
-  flex-shrink: 1;  */
+}
+
+@media (min-width: 768px) {
+  .middleCont {
+    gap: 10px;
+  }
 }
 
 .btnPagFirst,
@@ -49,6 +81,21 @@
 .btnPagNext,
 .btnPagLast {
   border: 1px solid rgba(38, 38, 38, 0.2);
+}
+
+.btnPagFirst svg,
+.btnPagBefore svg,
+.btnPagNext svg,
+.btnPagLast svg {
+  color: rgba(38, 38, 38, 1);
+  opacity: 1;
+}
+
+.btnPagFirst svg:disabled,
+.btnPagBefore svg:disabled,
+.btnPagNext svg:disabled,
+.btnPagLast svg:disabled {
+  color: rgba(38, 38, 38, 0.5);
 }
 
 .btnPagFirst:not(:disabled),
@@ -61,4 +108,14 @@
 .iconPagNext,
 .iconPagLast {
   transform: rotateY(180deg);
+}
+
+@media (min-width: 768px) {
+  .iconPagNext,
+  .iconPagLast,
+  .iconPagBefore,
+  .iconPageNext {
+    width: 24px;
+    height: 24px;
+  }
 }
