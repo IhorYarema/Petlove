@@ -4,7 +4,7 @@ import api from "../../services/api";
 export const fetchNotices = createAsyncThunk(
   "notices/fetchNotices",
   async (
-    { page = 1, limit = 10, category, sex, type, location, keyword, sortBy },
+    { page = 1, limit = 6, category, sex, type, location, keyword, sortBy },
     thunkAPI,
   ) => {
     try {

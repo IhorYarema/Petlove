@@ -6,38 +6,23 @@ export default function Pagination({
   totalPages,
   perPage,
   onPageChange,
-  maxButtons = 5,
   className = "",
 }) {
   if (totalPages <= 1) return null;
 
-  const createPages = () => {
-    const pages = [];
-    const half = Math.floor(maxButtons / 2);
-
-    let start = Math.max(1, page - half);
-    let end = Math.min(totalPages, page + half);
-
-    // Коррекция если ближе к началу
-    if (page <= half) {
-      start = 1;
-      end = Math.min(totalPages, maxButtons);
+  const getPages = () => {
+    if (totalPages <= 3) {
+      return Array.from({ length: totalPages }, (_, i) => i + 1);
     }
 
-    // Коррекция если ближе к концу
-    if (page + half >= totalPages) {
-      end = totalPages;
-      start = Math.max(1, totalPages - maxButtons + 1);
+    if (page < totalPages / 2) {
+      return [page, page + 1, page + 2, "..."];
     }
 
-    for (let i = start; i <= end; i++) {
-      pages.push(i);
-    }
-
-    return pages;
+    return ["...", page - 1, page, page + 1];
   };
 
-  const pages = createPages();
+  const pages = getPages();
 
   return (
     <div className={`${css.container} ${className}`}>
@@ -68,12 +53,12 @@ export default function Pagination({
       <div className={css.middleCont}>
         {pages.map((p, index) =>
           p === "..." ? (
-            <span key={index} className={css.dots}>
+            <span key={`dots-${index}`} className={css.dots}>
               ...
             </span>
           ) : (
             <button
-              key={p}
+              key={`page-${p}`}
               onClick={() => onPageChange(p, perPage)}
               className={p === page ? css.active : ""}
             >
