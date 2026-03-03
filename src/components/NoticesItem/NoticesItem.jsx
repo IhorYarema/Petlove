@@ -2,15 +2,48 @@ import css from "./NoticesItem.module.css";
 import Icon from "../Icon/Icon";
 import ModalAttention from "../ModalAttention/ModalAttention";
 import ModalNotice from "../ModalNotice/ModalNotice";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
+import { toggleFavorite } from "../../redux/notices/operations";
+import { setFavorites } from "../../redux/notices/slice";
 
 export default function NoticesItem({ item }) {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const [modalType, setModalType] = useState(null);
 
+  const dispatch = useDispatch();
+
+  const favorites = useSelector((state) => state.notices?.favorites ?? []);
+
+  const isFavorite = useSelector((state) =>
+    state.notices?.favorites?.includes(item._id),
+  );
+
   const handleLearnMore = () => {
     setModalType(isLoggedIn ? "notice" : "attention");
+  };
+
+  const handleFavoriteClick = () => {
+    if (!isLoggedIn) {
+      setModalType("attention");
+      return;
+    }
+
+    // Оптимистичное обновление UI
+    const currentlyFavorite = favorites.includes(item._id);
+    const newFavorites = currentlyFavorite
+      ? favorites.filter((id) => id !== item._id)
+      : [...favorites, item._id];
+
+    dispatch(setFavorites(newFavorites));
+
+    // Отправляем запрос на сервер
+    dispatch(toggleFavorite(item._id))
+      .unwrap()
+      .catch(() => {
+        // если сервер реально упал — откатываем изменения
+        dispatch(setFavorites(favorites));
+      });
   };
 
   return (
@@ -53,12 +86,11 @@ export default function NoticesItem({ item }) {
         <button onClick={handleLearnMore} className={css.moreBtn}>
           Learn more
         </button>
-        <button className={css.favBtn}>
-          <Icon
-            className={`${css.iconHeart} ${css.iconHeart}`}
-            name="heart"
-            size={18}
-          />
+        <button
+          onClick={handleFavoriteClick}
+          className={`${css.favBtn} ${isFavorite ? css.activeHeartBtn : ""}`}
+        >
+          <Icon className={css.iconHeart} name="heart" size={18} />
         </button>
       </div>
       {modalType === "attention" && (

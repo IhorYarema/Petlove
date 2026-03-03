@@ -3,7 +3,7 @@ import api from "../../services/api";
 
 export const fetchNews = createAsyncThunk(
   "news/fetchNews",
-  async ({ page = 1, perPage = 10, keyword }, thunkAPI) => {
+  async ({ page = 1, perPage = 6, keyword }, thunkAPI) => {
     try {
       const params = {
         page,

@@ -1,8 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchNotices } from "./operations";
+import { fetchNotices, toggleFavorite } from "./operations";
 
 const initialState = {
   items: [],
+  favorites: [],
   page: 1,
   perPage: 10,
   totalPages: 1,
@@ -19,6 +20,9 @@ const noticesSlice = createSlice({
     },
     setPerPage(state, action) {
       state.perPage = action.payload;
+    },
+    setFavorites(state, action) {
+      state.favorites = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -55,9 +59,20 @@ const noticesSlice = createSlice({
       .addCase(fetchNotices.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload || "Failed to load notices";
+      })
+      // .addCase(toggleFavorite.pending, (state) => {
+      //   // Убираем loading — оптимистично обновляем UI
+      //   // state.loading = true; // ← можно убрать
+      // })
+      // .addCase(toggleFavorite.fulfilled, (state) => {
+      //   // не нужно ничего делать, UI уже обновлён
+      // })
+      .addCase(toggleFavorite.rejected, (state, action) => {
+        // можно показывать toast или ошибку
+        console.error(action.payload);
       });
   },
 });
 
-export const { setPage, setPerPage } = noticesSlice.actions;
+export const { setPage, setPerPage, setFavorites } = noticesSlice.actions;
 export default noticesSlice.reducer;

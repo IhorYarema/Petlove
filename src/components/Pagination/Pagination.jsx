@@ -15,6 +15,11 @@ export default function Pagination({
       return Array.from({ length: totalPages }, (_, i) => i + 1);
     }
 
+    // если мы на последней странице
+    if (page >= totalPages - 1) {
+      return ["...", totalPages - 2, totalPages - 1, totalPages];
+    }
+
     if (page < totalPages / 2) {
       return [page, page + 1, page + 2, "..."];
     }

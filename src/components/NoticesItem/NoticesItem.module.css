@@ -161,3 +161,7 @@
 .iconHeart {
   color: rgba(246, 184, 61, 1);
 }
+
+.activeHeartBtn {
+  background-color: rgba(251, 231, 193, 1);
+}
