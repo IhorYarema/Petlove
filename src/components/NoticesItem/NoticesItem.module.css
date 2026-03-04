@@ -162,6 +162,11 @@
   color: rgba(246, 184, 61, 1);
 }
 
-.activeHeartBtn {
+.activeHeartBtn,
+.favBtn:hover {
   background-color: rgba(251, 231, 193, 1);
+}
+
+.activeHeartBtn:hover {
+  background-color: rgba(255, 244, 223, 1);
 }

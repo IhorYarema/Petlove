@@ -6,10 +6,12 @@ import {
   fetchCurrentUser,
 } from "./operations";
 
+const token = localStorage.getItem("token");
+
 const initialState = {
   user: null,
-  token: localStorage.getItem("token") ?? null,
-  isLoggedIn: false,
+  token: token ?? null,
+  isLoggedIn: !!token,
   loading: false,
   error: null,
 };

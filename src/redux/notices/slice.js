@@ -60,13 +60,6 @@ const noticesSlice = createSlice({
         state.loading = false;
         state.error = action.payload || "Failed to load notices";
       })
-      // .addCase(toggleFavorite.pending, (state) => {
-      //   // Убираем loading — оптимистично обновляем UI
-      //   // state.loading = true; // ← можно убрать
-      // })
-      // .addCase(toggleFavorite.fulfilled, (state) => {
-      //   // не нужно ничего делать, UI уже обновлён
-      // })
       .addCase(toggleFavorite.rejected, (state, action) => {
         // можно показывать toast или ошибку
         console.error(action.payload);

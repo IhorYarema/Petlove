@@ -1,5 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import api from "../../services/api";
+import { fetchCurrentUser } from "../auth/operations";
 
 export const fetchNotices = createAsyncThunk(
   "notices/fetchNotices",
@@ -30,11 +31,13 @@ export const fetchNotices = createAsyncThunk(
 );
 
 export const toggleFavorite = createAsyncThunk(
-  "notices/toggleFavorite",
+  "auth/toggleFavorite",
   async (noticeId, thunkAPI) => {
     try {
       const state = thunkAPI.getState();
-      const favorites = state.notices.favorites || [];
+      const favorites =
+        state.auth.user?.noticesFavorites?.map((n) => n._id) || [];
+
       const isFavorite = favorites.includes(noticeId);
 
       const url = isFavorite
@@ -45,13 +48,9 @@ export const toggleFavorite = createAsyncThunk(
 
       await api[method](url);
 
-      // возвращаем обновлённый массив или просто null, потому что UI обновлён оптимистично
-      return;
+      // 🔥 после изменения просто обновляем пользователя
+      thunkAPI.dispatch(fetchCurrentUser());
     } catch (error) {
-      // игнорируем 409
-      if (error.response?.status === 409) return;
-
-      // для остальных ошибок
       return thunkAPI.rejectWithValue(error.response?.data || error.message);
     }
   },

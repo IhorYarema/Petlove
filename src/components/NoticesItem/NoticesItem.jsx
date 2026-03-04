@@ -5,7 +5,6 @@ import ModalNotice from "../ModalNotice/ModalNotice";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { toggleFavorite } from "../../redux/notices/operations";
-import { setFavorites } from "../../redux/notices/slice";
 
 export default function NoticesItem({ item }) {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
@@ -13,10 +12,8 @@ export default function NoticesItem({ item }) {
 
   const dispatch = useDispatch();
 
-  const favorites = useSelector((state) => state.notices?.favorites ?? []);
-
   const isFavorite = useSelector((state) =>
-    state.notices?.favorites?.includes(item._id),
+    state.auth.user?.noticesFavorites?.some((fav) => fav._id === item._id),
   );
 
   const handleLearnMore = () => {
@@ -29,21 +26,7 @@ export default function NoticesItem({ item }) {
       return;
     }
 
-    // Оптимистичное обновление UI
-    const currentlyFavorite = favorites.includes(item._id);
-    const newFavorites = currentlyFavorite
-      ? favorites.filter((id) => id !== item._id)
-      : [...favorites, item._id];
-
-    dispatch(setFavorites(newFavorites));
-
-    // Отправляем запрос на сервер
-    dispatch(toggleFavorite(item._id))
-      .unwrap()
-      .catch(() => {
-        // если сервер реально упал — откатываем изменения
-        dispatch(setFavorites(favorites));
-      });
+    dispatch(toggleFavorite(item._id));
   };
 
   return (
