@@ -1,9 +1,16 @@
 import css from "./ModalNotice.module.css";
 import { useEffect, useState } from "react";
 import Icon from "../Icon/Icon";
+import { toggleFavorite } from "../../redux/notices/operations";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function ModalNotice({ item, className, onClose }) {
   const [isClosing, setIsClosing] = useState(false);
+  const dispatch = useDispatch();
+
+  const isFavorite = useSelector((state) =>
+    state.auth.user?.noticesFavorites?.some((fav) => fav._id === item._id),
+  );
 
   const closeModal = () => {
     setIsClosing(true);
@@ -20,6 +27,10 @@ export default function ModalNotice({ item, className, onClose }) {
 
   const closeByBackdrop = (e) => {
     if (e.target === e.currentTarget) closeModal();
+  };
+
+  const handleFavoriteClick = () => {
+    dispatch(toggleFavorite(item._id));
   };
 
   return (
@@ -94,8 +105,8 @@ export default function ModalNotice({ item, className, onClose }) {
           {item.price ? "$" + item.price : "Price needs clarification"}
         </p>
         <div className={css.btnsCont}>
-          <button className={css.favBtn}>
-            Add to
+          <button onClick={handleFavoriteClick} className={css.favBtn}>
+            {!isFavorite ? "Add to" : "Remove"}
             <Icon className={`${css.iconHeart}`} name="heart" size={18} />
           </button>
           <button className={css.contactBtn}>Contact</button>
