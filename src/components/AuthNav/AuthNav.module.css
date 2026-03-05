@@ -40,6 +40,12 @@
   color: rgba(255, 255, 255, 1);
 }
 
+.login:hover {
+  border: none;
+  background-color: rgba(255, 244, 223, 1);
+  color: rgba(246, 184, 61, 1);
+}
+
 @media (min-width: 768px) {
   .login {
     /* padding: 15px 35px; */
@@ -53,9 +59,12 @@
   color: rgba(246, 184, 61, 1);
 }
 
+.register:hover {
+  background-color: rgba(251, 231, 193, 1);
+}
+
 @media (min-width: 768px) {
   .register {
-    /* padding: 15px 20px; */
     padding: 15px 0;
     width: 149px;
   }

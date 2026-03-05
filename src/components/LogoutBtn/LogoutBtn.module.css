@@ -25,12 +25,22 @@ header .btn {
   }
 }
 
-aside .btn {
+header aside .btn {
   display: flex;
 }
 
 .btnYellow {
   background-color: rgba(246, 184, 61, 1);
+  color: rgba(255, 255, 255, 1);
+}
+
+aside .btnYellow {
+  background-color: rgba(255, 244, 223, 1);
+  color: rgba(246, 184, 61, 1);
+}
+
+.btnYellow:hover {
+  background-color: rgba(249, 176, 32, 1);
   color: rgba(255, 244, 223, 1);
 }
 
@@ -39,7 +49,12 @@ aside .btn {
   color: rgba(246, 184, 61, 1);
 }
 
-.btnHome {
+.btnHome:hover {
+  background-color: rgba(249, 176, 32, 1);
+  color: rgba(255, 244, 223, 1);
+}
+
+header .btnHome {
   display: none;
 }
 

@@ -233,6 +233,10 @@
   letter-spacing: -0.03em;
 }
 
+.contactBtn:hover {
+  background-color: rgba(251, 231, 193, 1);
+}
+
 /* ANIMATION */
 .backdrop {
   opacity: 1;

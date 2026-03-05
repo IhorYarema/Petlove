@@ -68,8 +68,9 @@ header .navYellow .link {
   color: rgba(38, 38, 38, 1);
 }
 
-header aside .navYellow .active {
-  border: 1px solid rgba(255, 255, 255, 1);
+header aside .navYellow .active,
+header .navYellow .active {
+  border: 1px solid rgba(246, 184, 61, 1);
 }
 
 header aside .navWhite .link {
