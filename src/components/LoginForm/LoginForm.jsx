@@ -14,21 +14,31 @@ export default function LoginForm() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const onError = (formErrors) => {
-    const messages = Object.values(formErrors).map((err) => err.message);
-    messages.forEach((msg) => toast.error(msg));
-  };
+  // const onError = (formErrors) => {
+  //   const messages = Object.values(formErrors).map((err) => err.message);
+  //   messages.forEach((msg) => toast.error(msg));
+  // };
 
   const { loading, error } = useSelector((state) => state.auth);
 
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, touchedFields, isValid },
   } = useForm({
     resolver: yupResolver(schema),
-    mode: "onTouched",
+    mode: "onChange",
   });
+
+  const emailError = errors.email;
+  const emailTouched = touchedFields.email;
+
+  const emailState =
+    emailError && emailTouched
+      ? "error"
+      : !emailError && emailTouched
+        ? "success"
+        : "";
 
   const [showPassword, setShowPassword] = useState(false);
 
@@ -47,10 +57,7 @@ export default function LoginForm() {
   };
 
   return (
-    <form
-      className={css.form}
-      onSubmit={handleSubmit(handleFormSubmit, onError)}
-    >
+    <form className={css.form} onSubmit={handleSubmit(handleFormSubmit)}>
       <div className={css.textContainer}>
         <Title className={css.title} />
         <p className={css.formText}>
@@ -58,14 +65,32 @@ export default function LoginForm() {
         </p>
       </div>
 
-      <input
-        className={`${css.input} ${css.firstInput}`}
-        type="email"
-        placeholder="Email"
-        {...register("email")}
-      />
+      <div className={`${css.inputWrapper} ${css.firstInputWrapper}`}>
+        <input
+          className={`${css.input} ${css.firstInput} ${
+            emailState === "error"
+              ? css.inputError
+              : emailState === "success"
+                ? css.inputSuccess
+                : ""
+          }`}
+          type="email"
+          placeholder="Email"
+          {...register("email")}
+        />
+        {emailState === "error" && (
+          <>
+            <p className={css.errorText}>Enter a valid Email</p>
+            <Icon className={css.iconError} name="cross-small" size={22} />
+          </>
+        )}
 
-      <div className={css.inputWrapper}>
+        {emailState === "success" && (
+          <Icon className={css.iconSuccess} name="check" size={22} />
+        )}
+      </div>
+
+      <div className={`${css.inputWrapper} ${css.lastInputWrapper}`}>
         <input
           className={`${css.input} ${css.lastInput}`}
           type={showPassword ? "text" : "password"}
