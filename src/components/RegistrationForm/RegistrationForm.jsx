@@ -24,28 +24,39 @@ export default function RegisterForm() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, touchedFields, isValid },
   } = useForm({
     resolver: yupResolver(schema),
-    mode: "onTouched",
+    mode: "onChange",
   });
+
+  const getFieldState = (field) => {
+    const error = errors[field];
+    const touched = touchedFields[field];
+
+    if (error && touched) return "error";
+    if (!error && touched) return "success";
+    return "";
+  };
+
+  const nameState = getFieldState("name");
+  const emailState = getFieldState("email");
+  const passwordState = getFieldState("password");
+  const confirmPasswordState = getFieldState("confirmPassword");
 
   const [showPassword, setShowPassword] = useState(false);
 
   const togglePassword = () => setShowPassword((p) => !p);
 
   const handleFormSubmit = async (data) => {
-    const { confirmPassword, ...userData } = data;
+    try {
+      await dispatch(registerUser(data)).unwrap();
 
-    const result = await dispatch(registerUser(userData)); // ✅
-
-    if (result.error) {
-      toast.error(result.payload || "Registration failed");
-      return;
+      toast.success("Welcome!");
+      navigate("/profile");
+    } catch (err) {
+      toast.error(err ?? "Invalid email or password");
     }
-
-    toast.success("Registration successful!");
-    navigate("/profile");
   };
 
   return (
@@ -60,23 +71,55 @@ export default function RegisterForm() {
         </p>
       </div>
 
-      <input
-        className={`${css.input} ${css.firstInput}`}
-        type="text"
-        placeholder="Name"
-        {...register("name")}
-      />
-
-      <input
-        className={css.input}
-        type="email"
-        placeholder="Email"
-        {...register("email")}
-      />
+      <div className={`${css.inputWrapper} ${css.firstInputWrapper}`}>
+        <input
+          className={`${css.input} ${css.firstInput} ${
+            nameState === "error"
+              ? css.inputError
+              : nameState === "success"
+                ? css.inputSuccess
+                : ""
+          }`}
+          type="text"
+          placeholder="Name"
+          {...register("name")}
+        />
+      </div>
 
       <div className={css.inputWrapper}>
         <input
-          className={css.input}
+          className={`${css.input} ${
+            emailState === "error"
+              ? css.inputError
+              : emailState === "success"
+                ? css.inputSuccess
+                : ""
+          }`}
+          type="email"
+          placeholder="Email"
+          {...register("email")}
+        />
+        {emailState === "error" && (
+          <>
+            <p className={css.errorText}>Enter a valid Email</p>
+            <Icon className={css.iconError} name="cross-small" size={22} />
+          </>
+        )}
+
+        {emailState === "success" && (
+          <Icon className={css.iconSuccess} name="check" size={22} />
+        )}
+      </div>
+
+      <div className={css.inputWrapper}>
+        <input
+          className={`${css.input} ${
+            passwordState === "error"
+              ? css.inputError
+              : passwordState === "success"
+                ? css.inputSuccess
+                : ""
+          }`}
           type={showPassword ? "text" : "password"}
           placeholder="Password"
           {...register("password")}
@@ -90,9 +133,15 @@ export default function RegisterForm() {
         </button>
       </div>
 
-      <div className={css.inputWrapper}>
+      <div className={`${css.inputWrapper} ${css.lastInputWrapper}`}>
         <input
-          className={`${css.input} ${css.lastInput}`}
+          className={`${css.input} ${css.lastInput} ${
+            confirmPasswordState === "error"
+              ? css.inputError
+              : confirmPasswordState === "success"
+                ? css.inputSuccess
+                : ""
+          }`}
           type={showPassword ? "text" : "password"}
           placeholder="Confirm password"
           {...register("confirmPassword")}
@@ -106,7 +155,7 @@ export default function RegisterForm() {
         </button>
       </div>
 
-      <button type="submit" className={css.btn} disabled={loading}>
+      <button type="submit" className={css.btn} disabled={!isValid || loading}>
         {loading ? "Loading..." : "Registration"}
       </button>
 
