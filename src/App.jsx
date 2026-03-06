@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchCurrentUser } from "./redux/auth/operations";
 
 import css from "./App.module.css";
-import { Toaster } from "react-hot-toast";
+import { ToastContainer } from "react-toastify";
 
 const MainPage = lazy(() => import("./pages/MainPage/MainPage"));
 const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
@@ -49,20 +49,7 @@ function App() {
           </Routes>
         </Suspense>
       </div>
-      <Toaster
-        position="top-right"
-        toastOptions={{
-          duration: 3000,
-          style: {
-            background: "rgba(240, 63, 59, 1)",
-            color: "#fff",
-            zIndex: 999999999999999,
-            borderRadius: "12px",
-            padding: "12px 18px",
-            boxShadow: "0 4px 24px rgba(0,0,0,0.2)",
-          },
-        }}
-      />
+      <ToastContainer position="top-right" autoClose={3000} theme="colored" />
     </div>
   );
 }

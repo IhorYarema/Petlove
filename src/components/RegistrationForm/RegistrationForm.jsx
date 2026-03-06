@@ -45,7 +45,7 @@ export default function RegisterForm() {
     }
 
     toast.success("Registration successful!");
-    navigate("/home");
+    navigate("/profile");
   };
 
   return (

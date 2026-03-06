@@ -45,15 +45,14 @@ export default function LoginForm() {
   const togglePassword = () => setShowPassword((p) => !p);
 
   const handleFormSubmit = async (data) => {
-    const result = await dispatch(loginUser(data));
+    try {
+      await dispatch(loginUser(data)).unwrap();
 
-    if (result.error) {
-      toast.error(result.payload || "Login failed");
-      return;
+      toast.success("Welcome back!");
+      navigate("/profile");
+    } catch (err) {
+      toast.error(err ?? "Invalid email or password");
     }
-
-    toast.success("Login successful!");
-    navigate("/home");
   };
 
   return (
@@ -106,7 +105,7 @@ export default function LoginForm() {
         </button>
       </div>
 
-      <button type="submit" className={css.btn} disabled={loading}>
+      <button type="submit" className={css.btn} disabled={!isValid || loading}>
         {loading ? "Loading..." : "Log in"}
       </button>
 
