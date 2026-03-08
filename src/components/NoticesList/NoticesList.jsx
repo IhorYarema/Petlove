@@ -10,7 +10,7 @@ export default function NoticesList({ className = "" }) {
   const loading = useSelector((state) => state.notices.loading);
 
   useEffect(() => {
-    dispatch(fetchNotices({ page: 1, perPage: 10 }));
+    dispatch(fetchNotices({ page: 1, perPage: 6 }));
   }, [dispatch]);
 
   if (loading) return <p>Loading Notices...</p>;

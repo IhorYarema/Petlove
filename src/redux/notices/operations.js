@@ -5,13 +5,13 @@ import { fetchCurrentUser } from "../auth/operations";
 export const fetchNotices = createAsyncThunk(
   "notices/fetchNotices",
   async (
-    { page = 1, limit = 6, category, sex, type, location, keyword, sortBy },
+    { page = 1, perPage = 6, category, sex, type, location, keyword, sortBy },
     thunkAPI,
   ) => {
     try {
       const params = {
         page,
-        limit,
+        perPage,
       };
 
       if (category) params.category = category;

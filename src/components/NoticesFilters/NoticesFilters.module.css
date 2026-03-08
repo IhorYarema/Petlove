@@ -2,9 +2,7 @@
   background-color: rgba(255, 244, 223, 1);
   padding: 20px;
   border-radius: 30px;
-  /* display: flex;
-  flex-direction: column;
-  gap: 12px; */
+  margin-bottom: 40px;
 }
 
 .filtersInput {
@@ -16,9 +14,7 @@
 @media (min-width: 768px) {
   .filters {
     padding: 32px 40px;
-    /* flex-direction: row;
-    flex-wrap: wrap;
-    gap: 16px; */
+    margin-bottom: 32px;
   }
 
   .filtersInput {
@@ -33,6 +29,7 @@
   .filters {
     padding: 40px;
     flex-wrap: nowrap;
+    margin-bottom: 40px;
   }
 }
 

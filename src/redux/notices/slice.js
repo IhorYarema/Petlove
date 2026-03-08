@@ -5,7 +5,7 @@ const initialState = {
   items: [],
   favorites: [],
   page: 1,
-  perPage: 10,
+  perPage: 6,
   totalPages: 1,
   loading: false,
   error: null,
