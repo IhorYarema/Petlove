@@ -1,7 +1,8 @@
 import css from "./EditUserBtn.module.css";
 // import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
-import ModalEditUser from "./ModalEditUser";
+import ModalEditUser from "../ModalEditUser/ModalEditUser";
+import Icon from "../Icon/Icon";
 
 export default function EditUserBtn({ user }) {
   //   const dispatch = useDispatch();
@@ -18,8 +19,8 @@ export default function EditUserBtn({ user }) {
 
   return (
     <>
-      <button onClick={handleOpen} className={css.btn}>
-        Редагувати
+      <button onClick={handleOpen} className={css.btnEdit}>
+        <Icon className={css.iconEdit} name="edit" size={18} />
       </button>
 
       {isOpen && <ModalEditUser user={user} onClose={handleClose} />}
