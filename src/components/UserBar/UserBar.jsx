@@ -2,7 +2,7 @@ import css from "./UserBar.module.css";
 import { selectUserName } from "../../redux/auth/selectors";
 import { useSelector } from "react-redux";
 import Icon from "../Icon/Icon";
-import { useLocation } from "react-router-dom";
+import { useLocation, NavLink } from "react-router-dom";
 
 export default function UserBar({ className }) {
   const location = useLocation();
@@ -20,9 +20,9 @@ export default function UserBar({ className }) {
 
   return (
     <div className={`${userClass} ${className}`}>
-      <div className={css.avatar}>
+      <NavLink to="/profile" end className={css.avatar}>
         <Icon className={css.iconUser} name="user" size={20} />
-      </div>{" "}
+      </NavLink>
       <span className={css.name}>{userName}</span>
     </div>
   );

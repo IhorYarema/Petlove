@@ -1,0 +1,56 @@
+.userContainer {
+  background-color: rgba(246, 184, 61, 1);
+  width: 80px;
+  height: 38px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px;
+  gap: 4px;
+  color: rgba(255, 255, 255, 1);
+}
+
+.userContainer .iconUser {
+  color: rgba(255, 255, 255, 1);
+}
+
+.avatar {
+  background-color: rgba(255, 244, 223, 1);
+  border-radius: 50%;
+  width: 94px;
+  height: 94px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgba(246, 184, 61, 1);
+}
+
+.avatarText {
+  line-height: 16px;
+  letter-spacing: -0, 02em;
+  text-decoration: underline;
+  text-decoration-style: solid;
+}
+
+.info {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: -0.03em;
+
+  width: 100%;
+  padding: 12px;
+  border-radius: 30px;
+  border: 1px solid rgba(246, 184, 61, 1);
+  margin-bottom: 10px;
+}
+
+@media (min-width: 768px) {
+  .info {
+    padding: 16px;
+    margin-bottom: 16px;
+
+    font-size: 16px;
+    line-height: 20px;
+  }
+}
