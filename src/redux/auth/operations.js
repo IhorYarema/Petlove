@@ -98,3 +98,15 @@ export const fetchCurrentUserFull = createAsyncThunk(
     }
   },
 );
+
+// export const fetchPets = createAsyncThunk(
+//   "auth/fetchPets",
+//   async (_, thunkAPI) => {
+//     const { data } = await api.get("/notices");
+//     try {
+//       return data;
+//     } catch (e) {
+//       return thunkAPI.rejectWithValue(e.response?.data || e.message);
+//     }
+//   },
+// );
