@@ -1,6 +1,7 @@
+import MyNotices from "../../components/MyNotices/MyNotices";
 import UserCard from "../../components/UserCard/UserCard";
 import css from "./ProfilePage.module.css";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 export default function ProfilePage() {
   const dispatch = useDispatch();
@@ -8,6 +9,7 @@ export default function ProfilePage() {
   return (
     <section className={css.section}>
       <UserCard />
+      <MyNotices />
     </section>
   );
 }

@@ -6,14 +6,7 @@ import { selectUserPets } from "../../redux/auth/selectors";
 export default function PetsList({ className = "" }) {
   const pets = useSelector(selectUserPets);
 
-  if (!pets.length)
-    return (
-      <p className={css.noPetsText}>
-        Oops, looks like there aren't any furries on our adorable page yet. Do
-        not worry! View your pets on the "find your favorite pet" page and add
-        them to your favorites.
-      </p>
-    );
+  if (!pets.length) return null;
 
   return (
     <div className={`${css.container} ${className}`}>
