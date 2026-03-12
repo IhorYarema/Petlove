@@ -11,7 +11,7 @@ export default function UserCard() {
 
   return (
     <div className={css.userCard}>
-      <EditUserBtn user={user} />
+      <EditUserBtn user={user} className={css.editBtn} />
       <UserBlock user={user} />
       <PetsBlock />
       <LogoutBtn className={css.logOutBtn} />

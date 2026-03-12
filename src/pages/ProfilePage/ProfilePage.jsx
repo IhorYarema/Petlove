@@ -8,8 +8,10 @@ export default function ProfilePage() {
 
   return (
     <section className={css.section}>
-      <UserCard />
-      <MyNotices />
+      <div className={css.container}>
+        <UserCard />
+        <MyNotices />
+      </div>
     </section>
   );
 }

@@ -39,9 +39,9 @@ export default function MyNotices({ className = "" }) {
           </button>
         </div>
         <p className={css.emptyText}>
-          Oops, looks like there aren't any furries on our adorable page yet. Do
-          not worry! View your pets on the "find your favorite pet" page and add
-          them to your favorites.
+          Oops, <span>looks like there aren't any furries</span> on our adorable
+          page yet. Do not worry! View your pets on the "find your favorite pet"
+          page and add them to your favorites.
         </p>
       </div>
     );

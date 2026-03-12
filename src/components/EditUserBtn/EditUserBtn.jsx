@@ -4,7 +4,7 @@ import { useState } from "react";
 import ModalEditUser from "../ModalEditUser/ModalEditUser";
 import Icon from "../Icon/Icon";
 
-export default function EditUserBtn({ user }) {
+export default function EditUserBtn({ user, className = "" }) {
   //   const dispatch = useDispatch();
 
   const [isOpen, setIsOpen] = useState(false);
@@ -19,7 +19,7 @@ export default function EditUserBtn({ user }) {
 
   return (
     <>
-      <button onClick={handleOpen} className={css.btnEdit}>
+      <button onClick={handleOpen} className={`${css.btnEdit} ${className}`}>
         <Icon className={css.iconEdit} name="edit" size={18} />
       </button>
 
