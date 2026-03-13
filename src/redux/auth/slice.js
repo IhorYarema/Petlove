@@ -5,6 +5,7 @@ import {
   logoutUserThunk,
   fetchCurrentUser,
   fetchCurrentUserFull,
+  updateUser,
 } from "./operations";
 
 const token = localStorage.getItem("token");
@@ -94,6 +95,14 @@ const authSlice = createSlice({
       .addCase(fetchCurrentUserFull.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
+      })
+
+      // UPDATE
+      .addCase(updateUser.fulfilled, (state, action) => {
+        state.user = {
+          ...state.user,
+          ...action.payload,
+        };
       });
   },
 });

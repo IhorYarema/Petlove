@@ -98,3 +98,15 @@ export const fetchCurrentUserFull = createAsyncThunk(
     }
   },
 );
+
+export const updateUser = createAsyncThunk(
+  "auth/updateUser",
+  async (data, { rejectWithValue }) => {
+    try {
+      const response = await api.patch("/users/current", data);
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response?.data || error.message);
+    }
+  },
+);
