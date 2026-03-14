@@ -83,6 +83,11 @@
   }
 }
 
+.input:hover,
+.input:focus {
+  border: 1px solid rgba(246, 184, 61, 1);
+}
+
 .firstInputWrapper {
   margin-top: 20px;
 }

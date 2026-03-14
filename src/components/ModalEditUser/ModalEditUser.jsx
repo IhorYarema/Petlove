@@ -18,16 +18,36 @@ export default function ModalEditUser({ className, onClose }) {
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting },
+    formState: { errors, touchedFields, isValid },
   } = useForm({
     resolver: yupResolver(editUserSchema),
     defaultValues: {
       name: user?.name || "",
       email: user?.email || "",
       avatar: user?.avatar || "",
-      phone: user?.phone || "",
+      phone: user?.phone || "+380",
     },
   });
+
+  // const onError = (formErrors) => {
+  //   const messages = Object.values(formErrors).map((err) => err.message);
+  //   messages.forEach((msg) => toast.error(msg));
+  // };
+
+  const { loading, error } = useSelector((state) => state.auth);
+
+  const getFieldState = (field) => {
+    const error = errors[field];
+    const touched = touchedFields[field];
+
+    if (error && touched) return "error";
+    if (!error && touched) return "success";
+    return "";
+  };
+
+  const nameState = getFieldState("name");
+  const emailState = getFieldState("email");
+  const phoneState = getFieldState("phone");
 
   const onSubmit = async (data) => {
     try {
@@ -73,15 +93,15 @@ export default function ModalEditUser({ className, onClose }) {
         <form onSubmit={handleSubmit(onSubmit)} className={css.form}>
           {!user.avatar ? (
             <div className={css.avatarEmpty}>
-              <Icon className={css.iconUser} name="user" size={40} />
+              <Icon className={css.iconUser} name="user" size={44} />
             </div>
           ) : (
             <img src={user.avatar} alt="Avatar Image" className={css.img} />
           )}
 
           {/* AVATAR */}
-          <label>
-            <input {...register("avatar")} />
+          <div className={`${css.inputWrapper} ${css.firstInputWrapper}`}>
+            <input className={css.input} {...register("avatar")} />
             {errors.avatar && (
               <p className={css.error}>{errors.avatar.message}</p>
             )}
@@ -89,28 +109,72 @@ export default function ModalEditUser({ className, onClose }) {
               <p>Upload photo</p>{" "}
               <Icon className={css.iconCloud} name="upload-cloud" size={18} />
             </div>
-          </label>
+          </div>
           {/* NAME */}
-          <label>
-            <input {...register("name")} />
-            {errors.name && <p className={css.error}>{errors.name.message}</p>}
-          </label>
+          <div className={`${css.inputWrapper}`}>
+            <input
+              className={`${css.input} ${
+                nameState === "error"
+                  ? css.inputError
+                  : nameState === "success"
+                    ? css.inputSuccess
+                    : ""
+              }`}
+              type="text"
+              placeholder="Name"
+              {...register("name")}
+            />
+          </div>
 
           {/* EMAIL */}
-          <label>
-            <input {...register("email")} />
-            {errors.email && (
-              <p className={css.error}>{errors.email.message}</p>
+          <div className={css.inputWrapper}>
+            <input
+              className={`${css.input} ${
+                emailState === "error"
+                  ? css.inputError
+                  : emailState === "success"
+                    ? css.inputSuccess
+                    : ""
+              }`}
+              type="email"
+              placeholder="Email"
+              {...register("email")}
+            />
+            {emailState === "error" && (
+              <>
+                <p className={css.errorText}>Enter a valid Email</p>
+                <Icon className={css.iconError} name="cross-small" size={22} />
+              </>
             )}
-          </label>
+
+            {emailState === "success" && (
+              <Icon className={css.iconSuccess} name="check" size={22} />
+            )}
+          </div>
 
           {/* PHONE */}
-          <label>
-            <input {...register("phone")} placeholder="+380XXXXXXXXX" />
-            {errors.phone && (
-              <p className={css.error}>{errors.phone.message}</p>
-            )}
-          </label>
+          <div className={`${css.inputWrapper}`}>
+            <input
+              className={`${css.input} ${
+                phoneState === "error"
+                  ? css.inputError
+                  : phoneState === "success"
+                    ? css.inputSuccess
+                    : ""
+              }`}
+              type="text"
+              placeholder="Phone"
+              {...register("phone")}
+            />
+          </div>
+
+          <button
+            type="submit"
+            className={css.btn}
+            disabled={!isValid || loading}
+          >
+            {loading ? "Loading..." : "Go to profile"}
+          </button>
         </form>
       </div>
     </div>
