@@ -19,7 +19,7 @@ export default function RegisterForm() {
     messages.forEach((msg) => toast.error(msg));
   };
 
-  const { loading, error } = useSelector((state) => state.auth);
+  const { loading } = useSelector((state) => state.auth);
 
   const {
     register,

@@ -4,7 +4,7 @@ import Icon from "../Icon/Icon";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useDispatch, useSelector } from "react-redux";
-import { updateUser } from "../../redux/auth/operations";
+import { updateUser, fetchCurrentUserFull } from "../../redux/auth/operations";
 import { selectUserFullInfo } from "../../redux/auth/selectors";
 import { toast } from "react-toastify";
 import { editUserSchema } from "../../schemas/editUserSchema";
@@ -18,7 +18,9 @@ export default function ModalEditUser({ className, onClose }) {
   const {
     register,
     handleSubmit,
-    formState: { errors, touchedFields, isValid },
+    reset,
+    watch,
+    formState: { errors, touchedFields },
   } = useForm({
     resolver: yupResolver(editUserSchema),
     defaultValues: {
@@ -29,12 +31,12 @@ export default function ModalEditUser({ className, onClose }) {
     },
   });
 
-  // const onError = (formErrors) => {
-  //   const messages = Object.values(formErrors).map((err) => err.message);
-  //   messages.forEach((msg) => toast.error(msg));
-  // };
+  const onError = (formErrors) => {
+    const messages = Object.values(formErrors).map((err) => err.message);
+    messages.forEach((msg) => toast.error(msg));
+  };
 
-  const { loading, error } = useSelector((state) => state.auth);
+  const { loading } = useSelector((state) => state.auth);
 
   const getFieldState = (field) => {
     const error = errors[field];
@@ -49,22 +51,23 @@ export default function ModalEditUser({ className, onClose }) {
   const emailState = getFieldState("email");
   const phoneState = getFieldState("phone");
 
-  const onSubmit = async (data) => {
-    try {
-      await dispatch(updateUser(data)).unwrap();
-      toast.success("Profile updated successfully");
-      onClose();
-    } catch (error) {
-      toast.error(error.message || "Failed to update profile");
-    }
-  };
-
   const closeModal = () => {
     setIsClosing(true);
     setTimeout(() => {
       onClose();
     }, 300);
   };
+
+  useEffect(() => {
+    if (user) {
+      reset({
+        name: user.name || "",
+        email: user.email || "",
+        avatar: user.avatar || "",
+        phone: user.phone || "+380",
+      });
+    }
+  }, [user, reset]);
 
   useEffect(() => {
     const handleKey = (e) => e.key === "Escape" && closeModal();
@@ -75,6 +78,21 @@ export default function ModalEditUser({ className, onClose }) {
   const closeByBackdrop = (e) => {
     if (e.target === e.currentTarget) closeModal();
   };
+
+  const handleFormSubmit = async (data) => {
+    try {
+      await dispatch(updateUser(data)).unwrap();
+      await dispatch(fetchCurrentUserFull());
+
+      toast.success("Profile updated successfully");
+
+      closeModal();
+    } catch (err) {
+      toast.error(err?.message || "Invalid data");
+    }
+  };
+
+  const avatarValue = watch("avatar");
 
   return (
     <div
@@ -90,21 +108,21 @@ export default function ModalEditUser({ className, onClose }) {
         </button>
 
         <h3 className={css.title}>Edit information</h3>
-        <form onSubmit={handleSubmit(onSubmit)} className={css.form}>
+        <form
+          onSubmit={handleSubmit(handleFormSubmit, onError)}
+          className={css.form}
+        >
           {!user.avatar ? (
             <div className={css.avatarEmpty}>
               <Icon className={css.iconUser} name="user" size={44} />
             </div>
           ) : (
-            <img src={user.avatar} alt="Avatar Image" className={css.img} />
+            <img src={avatarValue || user?.avatar} className={css.img} />
           )}
 
           {/* AVATAR */}
           <div className={`${css.inputWrapper} ${css.firstInputWrapper}`}>
             <input className={css.input} {...register("avatar")} />
-            {errors.avatar && (
-              <p className={css.error}>{errors.avatar.message}</p>
-            )}
             <div className={css.uploadContainer}>
               <p>Upload photo</p>{" "}
               <Icon className={css.iconCloud} name="upload-cloud" size={18} />
@@ -171,7 +189,7 @@ export default function ModalEditUser({ className, onClose }) {
           <button
             type="submit"
             className={css.btn}
-            disabled={!isValid || loading}
+            // disabled={!isValid || loading}
           >
             {loading ? "Loading..." : "Go to profile"}
           </button>

@@ -17,10 +17,12 @@ export const editUserSchema = yup.object({
       /^https?:\/\/.*\.(?:png|jpg|jpeg|gif|bmp|webp)$/,
       "Avatar must be valid image URL",
     )
-    .required("Avatar is required"),
+    .nullable()
+    .notRequired(),
 
   phone: yup
     .string()
     .matches(/^\+38\d{10}$/, "Phone must match +380XXXXXXXXX")
-    .required("Phone is required"),
+    .nullable()
+    .notRequired(),
 });
