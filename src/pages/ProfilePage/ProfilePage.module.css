@@ -19,3 +19,16 @@
   flex-direction: column;
   gap: 40px;
 }
+
+@media (min-width: 768px) {
+  .container {
+    gap: 32px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .container {
+    display: flex;
+    flex-direction: row;
+  }
+}

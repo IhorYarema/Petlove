@@ -33,11 +33,13 @@ export default function UserCard({ user }) {
           <img src={user.avatar} alt="Avatar Image" className={css.img} />
         )}
         <h3 className={css.infoTitle}>My information</h3>
-        <p className={css.info}>{user.name}</p>
-        <p className={css.info}>{user.email}</p>
-        <p className={`${css.info} ${!user.phone ? css.empty : ""}`}>
-          {user.phone || "+380"}
-        </p>
+        <div className={css.textCont}>
+          <p className={css.info}>{user.name}</p>
+          <p className={css.info}>{user.email}</p>
+          <p className={`${css.info} ${!user.phone ? css.empty : ""}`}>
+            {user.phone || "+380"}
+          </p>
+        </div>
       </div>
 
       {isOpen && <ModalEditUser user={user} onClose={handleClose} />}

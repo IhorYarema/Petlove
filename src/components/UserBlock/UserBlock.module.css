@@ -11,6 +11,13 @@
   margin-bottom: 20px;
 }
 
+@media (min-width: 768px) {
+  .userContainer {
+    margin-bottom: 0;
+    position: absolute;
+  }
+}
+
 .userContainer .iconUser {
   color: rgba(255, 255, 255, 1);
 }
@@ -20,6 +27,12 @@
   flex-direction: column;
   gap: 8px;
   margin-bottom: 28px;
+}
+
+@media (min-width: 768px) {
+  .avatarContainer {
+    margin-bottom: 20px;
+  }
 }
 
 .infoContainer {
@@ -39,12 +52,27 @@
   color: rgba(246, 184, 61, 1);
 }
 
+@media (min-width: 768px) {
+  .avatarEmpty {
+    width: 110px;
+    height: 110px;
+  }
+}
+
 .avatar {
   border-radius: 50%;
   width: 94px;
   height: 94px;
   display: flex;
   margin-bottom: 30px;
+}
+
+@media (min-width: 768px) {
+  .avatar {
+    width: 110px;
+    height: 110px;
+    margin-bottom: 20px;
+  }
 }
 
 .avatarText {
@@ -60,6 +88,13 @@
   margin-bottom: 20px;
 }
 
+@media (min-width: 768px) {
+  .infoTitle {
+    font-size: 18px;
+    line-height: 24px;
+  }
+}
+
 .info {
   font-weight: 500;
   font-size: 14px;
@@ -70,16 +105,30 @@
   padding: 12px;
   border-radius: 30px;
   border: 1px solid rgba(246, 184, 61, 1);
-  margin-bottom: 10px;
 }
 
 @media (min-width: 768px) {
   .info {
-    padding: 16px;
-    margin-bottom: 16px;
-
     font-size: 16px;
     line-height: 20px;
+
+    padding: 16px;
+    width: 305px;
+  }
+}
+
+.textCont {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+@media (min-width: 768px) {
+  .textCont {
+    gap: 14px;
+    flex-direction: row;
+    flex-wrap: wrap;
   }
 }
 
