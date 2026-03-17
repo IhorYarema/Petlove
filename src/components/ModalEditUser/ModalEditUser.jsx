@@ -191,7 +191,7 @@ export default function ModalEditUser({ className, onClose }) {
             className={css.btn}
             // disabled={!isValid || loading}
           >
-            {loading ? "Loading..." : "Go to profile"}
+            {loading ? "Loading..." : "Save"}
           </button>
         </form>
       </div>
