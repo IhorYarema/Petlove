@@ -11,6 +11,13 @@
   }
 }
 
+@media (min-width: 1440px) {
+  .userCard {
+    min-width: 520px;
+    max-width: 928px;
+  }
+}
+
 .editBtn {
   position: absolute;
   top: 18px;

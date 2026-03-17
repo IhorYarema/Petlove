@@ -1,3 +1,9 @@
+@media (min-width: 1440px) {
+  .container {
+    padding-top: 40px;
+  }
+}
+
 .tabs {
   display: flex;
   gap: 10px;
@@ -20,4 +26,39 @@
 .activeTab {
   background-color: rgba(246, 184, 61, 1);
   color: rgba(255, 255, 255, 1);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border-radius: 30px;
+}
+
+@media (min-width: 768px) {
+  .list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+    max-height: 600px;
+    overflow-y: auto;
+  }
+}
+
+@media (min-width: 1440px) {
+  .list {
+    gap: 24px;
+  }
+}
+
+@media (min-width: 768px) {
+  .list .item {
+    width: calc((100% - 20px) / 2);
+  }
+}
+
+@media (min-width: 1440px) {
+  .list .item {
+    width: calc((100% - 24px) / 2);
+  }
 }
