@@ -1,5 +1,6 @@
 @media (min-width: 1440px) {
-  .container {
+  .container,
+  .containerEmpty {
     padding-top: 40px;
   }
 }
@@ -33,6 +34,8 @@
   flex-direction: column;
   gap: 20px;
   border-radius: 30px;
+  align-items: center;
+  justify-content: center;
 }
 
 @media (min-width: 768px) {
@@ -61,4 +64,39 @@
   .list .item {
     width: calc((100% - 24px) / 2);
   }
+}
+
+.emptyText {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: -0.02em;
+  text-align: center;
+
+  padding: 0 10px;
+  margin-top: 60px;
+  margin-bottom: 84px;
+}
+
+@media (min-width: 768px) {
+  .emptyText {
+    font-size: 16px;
+    line-height: 20px;
+
+    padding: 0 123px;
+    margin-top: 160px;
+    margin-bottom: 122px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .emptyText {
+    padding: 0 103px;
+    margin-top: 160px;
+    margin-bottom: 346px;
+  }
+}
+
+.emptyText span {
+  color: rgba(246, 184, 61, 1);
 }

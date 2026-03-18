@@ -17,7 +17,7 @@ export default function MyNotices({ className = "" }) {
 
   if (!notices.length) {
     return (
-      <div className={`${css.container} ${className}`}>
+      <div className={`${css.containerEmpty} ${className}`}>
         {/* TABS */}
         <div className={css.tabs}>
           <button
