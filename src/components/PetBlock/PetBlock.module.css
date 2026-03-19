@@ -87,6 +87,11 @@
     flex-direction: column;
     gap: 8px;
   }
+
+  .blockAdd .petCont {
+    display: none;
+  }
+
   .nameCont {
     display: flex;
     justify-content: space-between;
@@ -167,4 +172,8 @@
   .text {
     color: rgba(38, 38, 38, 0.8);
   }
+}
+
+.blockAdd.container {
+  justify-content: center;
 }
