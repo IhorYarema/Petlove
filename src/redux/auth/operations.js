@@ -110,3 +110,16 @@ export const updateUser = createAsyncThunk(
     }
   },
 );
+
+export const addPet = createAsyncThunk(
+  "auth/addPet",
+  async (petData, thunkAPI) => {
+    try {
+      const response = await api.post("/users/current/pets/add", petData);
+
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response?.data || error.message);
+    }
+  },
+);

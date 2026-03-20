@@ -6,6 +6,7 @@ import {
   fetchCurrentUser,
   fetchCurrentUserFull,
   updateUser,
+  addPet,
 } from "./operations";
 
 const token = localStorage.getItem("token");
@@ -103,6 +104,24 @@ const authSlice = createSlice({
           ...state.user,
           ...action.payload,
         };
+      })
+
+      //ADD PET
+      .addCase(addPet.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+
+      .addCase(addPet.fulfilled, (state, action) => {
+        state.loading = false;
+
+        // 🔥 backend возвращает ВСЕГО user
+        state.user = action.payload;
+      })
+
+      .addCase(addPet.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
       });
   },
 });
