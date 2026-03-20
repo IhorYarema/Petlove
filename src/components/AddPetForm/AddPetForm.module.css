@@ -1,0 +1,170 @@
+.title {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 20px;
+  letter-spacing: -0.03em;
+  margin-bottom: 20px;
+
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: 24px;
+    line-height: 28px;
+  }
+}
+
+.avatarEmpty {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: rgba(255, 244, 223, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2px;
+}
+
+@media (min-width: 768px) {
+  .avatarEmpty {
+    width: 86px;
+    height: 86px;
+    margin-bottom: 0;
+  }
+}
+
+.iconUser {
+  color: rgba(246, 184, 61, 1);
+}
+
+.img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-bottom: 2px;
+}
+
+@media (min-width: 768px) {
+  .img {
+    width: 86px;
+    height: 86px;
+    margin-bottom: 0;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .form {
+    gap: 14px;
+  }
+}
+
+.sexBtn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.male {
+  background-color: rgba(244, 63, 94, 0.1);
+}
+
+.female {
+  background-color: rgba(84, 173, 255, 0.1);
+}
+
+.unknown {
+  background-color: rgba(255, 244, 223, 1);
+}
+
+.inputRadio:checked + label {
+  color: blue;
+}
+
+.input::placeholder {
+  color: rgba(38, 38, 38, 0.5);
+}
+
+.inputWrapper {
+  width: 100%;
+  position: relative;
+}
+
+.input {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: -0.03em;
+
+  width: 100%;
+  padding: 12px;
+  border-radius: 30px;
+  border: 1px solid rgba(246, 184, 61, 1);
+}
+
+@media (min-width: 768px) {
+  .input {
+    padding: 16px;
+
+    font-size: 16px;
+    line-height: 20px;
+  }
+}
+
+.firstInputWrapper {
+  display: flex;
+  gap: 8px;
+}
+
+@media (min-width: 768px) {
+  .firstInputWrapper {
+    margin-bottom: 6px;
+  }
+
+  .firstInputWrapper .input {
+    padding: 12px 20px 12px 12px;
+  }
+}
+
+.uploadContainer {
+  background-color: rgba(255, 244, 223, 1);
+  display: flex;
+  gap: 8px;
+  padding: 12px;
+  border-radius: 30px;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: -0.02em;
+}
+
+.uploadContainer p {
+  white-space: nowrap;
+}
+
+.btn {
+  color: rgba(255, 255, 255, 1);
+  border-radius: 30px;
+  background-color: rgba(246, 184, 61, 1);
+  width: 100%;
+  padding: 12px;
+  margin-top: 11px;
+
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: -0.03em;
+}
