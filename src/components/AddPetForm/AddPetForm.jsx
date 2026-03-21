@@ -42,7 +42,7 @@ export default function AddPetForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)} className={css.form}>
       {/* SEX (radio) */}
       <div className={css.radioBtnCont}>
         <button
@@ -87,48 +87,65 @@ export default function AddPetForm() {
         <img src={avatarValue || pet?.avatar} className={css.img} />
       )}
 
-      {/* IMG URL */}
-      <div className={`${css.inputWrapper} ${css.firstInputWrapper}`}>
+      <div className={css.inputsContainer}>
+        {/* IMG URL */}
+        <div className={`${css.inputWrapper} ${css.firstInputWrapper}`}>
+          <input
+            className={css.input}
+            {...register("imgUrl")}
+            placeholder="Enter URL"
+          />
+          <div className={css.uploadContainer}>
+            <p>Upload photo</p>{" "}
+            <Icon className={css.iconCloud} name="upload-cloud" size={18} />
+          </div>
+        </div>
+
+        {/* TITLE */}
         <input
           className={css.input}
-          {...register("imgUrl")}
-          placeholder="Enter URL"
+          {...register("title")}
+          placeholder="Title"
         />
-        <div className={css.uploadContainer}>
-          <p>Upload photo</p>{" "}
-          <Icon className={css.iconCloud} name="upload-cloud" size={18} />
+
+        {/* NAME */}
+        <input
+          className={css.input}
+          {...register("name")}
+          placeholder="Pet’s Name"
+        />
+
+        <div className={css.lastInputCont}>
+          {/* SPECIES */}
+          <input
+            className={css.input}
+            {...register("species")}
+            placeholder="Species"
+          />
+
+          {/* BIRTHDAY */}
+          <input
+            className={css.input}
+            {...register("birthday")}
+            placeholder="00.00.0000"
+          />
         </div>
       </div>
 
-      {/* TITLE */}
-      <input className={css.input} {...register("title")} placeholder="Title" />
-
-      {/* NAME */}
-      <input
-        className={css.input}
-        {...register("name")}
-        placeholder="Pet’s Name"
-      />
-
-      {/* SPECIES */}
-      <input
-        className={css.input}
-        {...register("species")}
-        placeholder="Species"
-      />
-
-      {/* BIRTHDAY */}
-      <input
-        className={css.input}
-        {...register("birthday")}
-        placeholder="00.00.0000"
-      />
-
       {/* BUTTONS */}
-      <button type="submit">Submit</button>
-      <button type="button" onClick={handleBack}>
-        Back
-      </button>
+      <div className={css.btnCont}>
+        <button
+          type="button"
+          onClick={handleBack}
+          className={`${css.btn} ${css.back}`}
+        >
+          Back
+        </button>
+
+        <button type="submit" className={`${css.btn} ${css.submit}`}>
+          Submit
+        </button>
+      </div>
     </form>
   );
 }
