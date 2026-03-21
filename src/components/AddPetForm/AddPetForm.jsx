@@ -43,6 +43,9 @@ export default function AddPetForm() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={css.form}>
+      <h3 className={css.title}>
+        Add my pet /<span>Personal details</span>
+      </h3>
       {/* SEX (radio) */}
       <div className={css.radioBtnCont}>
         <button
