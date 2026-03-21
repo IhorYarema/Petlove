@@ -17,6 +17,7 @@ export default function AddPetForm() {
   const {
     register,
     watch,
+    setValue,
     handleSubmit,
     formState: { errors },
   } = useForm({
@@ -24,6 +25,7 @@ export default function AddPetForm() {
   });
 
   const avatarValue = watch("avatar");
+  const selectedSex = watch("sex");
 
   const onSubmit = async (data) => {
     try {
@@ -42,32 +44,39 @@ export default function AddPetForm() {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       {/* SEX (radio) */}
-      <button
-        className={`${css.sexBtn} ${css.male}`}
-        type="radio"
-        value="male"
-        {...register("sex")}
-      >
-        <Icon className={css.iconCloud} name="male" size={20} />
-      </button>
+      <div className={css.radioBtnCont}>
+        <button
+          type="button"
+          className={`${css.sexBtn} ${css.female} ${
+            selectedSex === "female" ? css.active : ""
+          }`}
+          onClick={() => setValue("sex", "female")}
+        >
+          <Icon className={css.iconSex} name="female" size={20} />
+        </button>
 
-      <button
-        className={`${css.sexBtn} ${css.female}`}
-        type="radio"
-        value="female"
-        {...register("sex")}
-      >
-        <Icon className={css.iconCloud} name="female" size={20} />
-      </button>
+        <button
+          type="button"
+          className={`${css.sexBtn} ${css.male} ${
+            selectedSex === "male" ? css.active : ""
+          }`}
+          onClick={() => setValue("sex", "male")}
+        >
+          <Icon className={css.iconSex} name="male" size={20} />
+        </button>
 
-      <button
-        className={`${css.sexBtn} ${css.unknown}`}
-        type="radio"
-        value="unknown"
-        {...register("sex")}
-      >
-        <Icon className={css.iconCloud} name="male-female" size={20} />
-      </button>
+        <button
+          type="button"
+          className={`${css.sexBtn} ${css.unknown} ${
+            selectedSex === "unknown" ? css.active : ""
+          }`}
+          onClick={() => setValue("sex", "unknown")}
+        >
+          <Icon className={css.iconSex} name="male-female" size={20} />
+        </button>
+      </div>
+      {/* регистрация поля */}
+      <input type="hidden" {...register("sex")} />
 
       {/* ava */}
       {!pet.avatar ? (

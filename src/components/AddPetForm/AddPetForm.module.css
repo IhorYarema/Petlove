@@ -66,6 +66,11 @@
   }
 }
 
+.radioBtnCont {
+  display: flex;
+  gap: 8px;
+}
+
 .sexBtn {
   width: 32px;
   height: 32px;
@@ -77,19 +82,46 @@
 }
 
 .male {
-  background-color: rgba(244, 63, 94, 0.1);
+  background-color: rgba(84, 173, 255, 0.1);
+}
+
+.male .iconSex {
+  color: rgba(84, 173, 255, 1);
 }
 
 .female {
-  background-color: rgba(84, 173, 255, 0.1);
+  background-color: rgba(244, 63, 94, 0.1);
+}
+
+.female .iconSex {
+  color: rgba(244, 63, 94, 1);
 }
 
 .unknown {
   background-color: rgba(255, 244, 223, 1);
 }
 
-.inputRadio:checked + label {
-  color: blue;
+.unknown .iconSex {
+  color: rgba(246, 184, 61, 1);
+}
+
+.active .iconSex {
+  color: rgba(255, 255, 255, 1);
+}
+
+/* для male */
+.male.active {
+  background-color: rgba(84, 173, 255, 1);
+}
+
+/* для female */
+.female.active {
+  background-color: rgba(244, 63, 94, 1);
+}
+
+/* для unknown */
+.unknown.active {
+  background-color: rgba(246, 184, 61, 1);
 }
 
 .input::placeholder {
