@@ -32,8 +32,6 @@ export default function NoticesFilters({ className }) {
   const sex = useSelector((state) => state.filters.sex);
   const types = useSelector((state) => state.filters.types);
 
-  // const loading = useSelector((state) => state.filters.loading);
-
   useEffect(() => {
     dispatch(fetchCategories());
     dispatch(fetchSex());
@@ -93,6 +91,7 @@ export default function NoticesFilters({ className }) {
       sex: value === "all" ? null : value,
     }));
   };
+
   const handleTypeChange = (value) => {
     setFilters((prev) => ({ ...prev, type: value === "all" ? null : value }));
   };

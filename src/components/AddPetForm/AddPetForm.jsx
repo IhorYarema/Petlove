@@ -1,6 +1,6 @@
 import css from "./AddPetForm.module.css";
 import Icon from "../Icon/Icon";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { addPetSchema } from "../../schemas/addPetSchema";
 import { useNavigate } from "react-router-dom";
@@ -8,6 +8,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { addPet } from "../../redux/auth/operations";
 import { toast } from "react-toastify";
 import { selectUserPets } from "../../redux/auth/selectors";
+import Select from "react-select";
+import "./Select.css";
 
 export default function AddPetForm() {
   const navigate = useNavigate();
@@ -18,14 +20,19 @@ export default function AddPetForm() {
     register,
     watch,
     setValue,
+    control,
     handleSubmit,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(addPetSchema),
+    defaultValues: {
+      species: "",
+    },
   });
 
   const avatarValue = watch("avatar");
   const selectedSex = watch("sex");
+  // const selectedSpecies = watch("species");
 
   const onSubmit = async (data) => {
     try {
@@ -40,6 +47,16 @@ export default function AddPetForm() {
   const handleBack = () => {
     navigate("/profile");
   };
+
+  //SELECT LOGIC
+  const types = useSelector((state) => state.filters.types);
+
+  const typesOptions = [
+    ...types.map((opt) => ({
+      value: opt,
+      label: opt,
+    })),
+  ];
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={css.form}>
@@ -95,7 +112,7 @@ export default function AddPetForm() {
         <div className={`${css.inputWrapper} ${css.firstInputWrapper}`}>
           <input
             className={css.input}
-            {...register("imgUrl")}
+            {...register("imgURL")}
             placeholder="Enter URL"
           />
           <div className={css.uploadContainer}>
@@ -120,15 +137,53 @@ export default function AddPetForm() {
 
         <div className={css.lastInputCont}>
           {/* SPECIES */}
-          <input
+          {/* <input
             className={css.input}
             {...register("species")}
             placeholder="Species"
+          /> */}
+          {/* <SelectComponent
+            value={selectedSpecies}
+            options={typesOptions}
+            defaultFilter={defaultFilter}
+            placeholder="Type of pet"
+            onFilterChange={(value) => setValue("species", value)}
+            className={css.input}
+          /> */}
+          <Controller
+            name="species"
+            control={control}
+            render={({ field }) => {
+              const selectedOption =
+                typesOptions.find((opt) => opt.value === field.value) || null;
+
+              return (
+                <div className={`${css.selectWrapper} selectWrapper`}>
+                  <Select
+                    unstyled
+                    value={selectedOption}
+                    onChange={(option) => field.onChange(option?.value)}
+                    options={typesOptions}
+                    isSearchable={false}
+                    className={css.reactSelectContainer}
+                    classNamePrefix="custom"
+                    placeholder="Type of pet"
+                  />
+
+                  {/* <Icon
+                    className={`${css.iconChevron} iconChevron`}
+                    name="chevron-down"
+                    size={18}
+                  /> */}
+                </div>
+              );
+            }}
           />
 
           {/* BIRTHDAY */}
           <input
             className={css.input}
+            // type="date"
             {...register("birthday")}
             placeholder="00.00.0000"
           />
