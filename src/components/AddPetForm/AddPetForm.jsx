@@ -1,5 +1,6 @@
 import css from "./AddPetForm.module.css";
 import Icon from "../Icon/Icon";
+import { useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { addPetSchema } from "../../schemas/addPetSchema";
@@ -8,7 +9,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { addPet } from "../../redux/auth/operations";
 import { toast } from "react-toastify";
 import { selectUserPets } from "../../redux/auth/selectors";
+import { fetchType } from "../../redux/filters/operations";
 import Select from "react-select";
+import { components } from "react-select";
 import "./Select.css";
 
 export default function AddPetForm() {
@@ -26,7 +29,7 @@ export default function AddPetForm() {
   } = useForm({
     resolver: yupResolver(addPetSchema),
     defaultValues: {
-      species: "",
+      species: null,
     },
   });
 
@@ -49,6 +52,10 @@ export default function AddPetForm() {
   };
 
   //SELECT LOGIC
+  useEffect(() => {
+    dispatch(fetchType());
+  }, [dispatch]);
+
   const types = useSelector((state) => state.filters.types);
 
   const typesOptions = [
@@ -57,6 +64,14 @@ export default function AddPetForm() {
       label: opt,
     })),
   ];
+
+  const CustomDropdownIndicator = (props) => {
+    return (
+      <components.DropdownIndicator {...props}>
+        <Icon className={css.iconChevron} name="chevron-down" size={18} />
+      </components.DropdownIndicator>
+    );
+  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={css.form}>
@@ -117,7 +132,7 @@ export default function AddPetForm() {
           />
           <div className={css.uploadContainer}>
             <p>Upload photo</p>{" "}
-            <Icon className={css.iconCloud} name="upload-cloud" size={18} />
+            <Icon className={css.iconCloud} name="upload-cloud" size={16} />
           </div>
         </div>
 
@@ -136,20 +151,17 @@ export default function AddPetForm() {
         />
 
         <div className={css.lastInputCont}>
+          {/* BIRTHDAY */}
+          <div className={css.inputCont}>
+            <input
+              className={css.input}
+              // type="date"
+              {...register("birthday")}
+              placeholder="00.00.0000"
+            />
+          </div>
+
           {/* SPECIES */}
-          {/* <input
-            className={css.input}
-            {...register("species")}
-            placeholder="Species"
-          /> */}
-          {/* <SelectComponent
-            value={selectedSpecies}
-            options={typesOptions}
-            defaultFilter={defaultFilter}
-            placeholder="Type of pet"
-            onFilterChange={(value) => setValue("species", value)}
-            className={css.input}
-          /> */}
           <Controller
             name="species"
             control={control}
@@ -168,6 +180,10 @@ export default function AddPetForm() {
                     className={css.reactSelectContainer}
                     classNamePrefix="custom"
                     placeholder="Type of pet"
+                    components={{
+                      DropdownIndicator: CustomDropdownIndicator,
+                      IndicatorSeparator: () => null,
+                    }}
                   />
 
                   {/* <Icon
@@ -178,14 +194,6 @@ export default function AddPetForm() {
                 </div>
               );
             }}
-          />
-
-          {/* BIRTHDAY */}
-          <input
-            className={css.input}
-            // type="date"
-            {...register("birthday")}
-            placeholder="00.00.0000"
           />
         </div>
       </div>

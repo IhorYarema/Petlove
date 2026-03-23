@@ -3,6 +3,7 @@
   flex-direction: column;
   align-items: center;
   padding: 28px 20px 20px;
+  border-radius: 30px;
   background-color: rgba(255, 255, 255, 1);
 }
 
@@ -162,6 +163,11 @@
   margin-bottom: 31px;
 }
 
+.lastInputCont .selectWrapper,
+.lastInputCont .inputCont {
+  width: calc((100% - 16px) / 2);
+}
+
 .input {
   font-weight: 500;
   font-size: 14px;
@@ -172,7 +178,6 @@
   padding: 12px;
   border-radius: 30px;
   border: 1px solid rgba(38, 38, 38, 0.15);
-  margin-bottom: 10px;
 }
 
 @media (min-width: 768px) {
@@ -210,7 +215,7 @@
   background-color: rgba(255, 244, 223, 1);
   display: flex;
   gap: 8px;
-  padding: 12px;
+  padding: 10px;
   border-radius: 30px;
   justify-content: center;
   align-items: center;

@@ -1,0 +1,75 @@
+.custom__control {
+  background-color: rgba(255, 255, 255, 1);
+  border: none;
+  border-radius: 30px;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  white-space: nowrap;
+  text-transform: capitalize;
+
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: -0.03em;
+
+  width: 100%;
+  padding: 12px;
+  border-radius: 30px;
+  border: 1px solid rgba(38, 38, 38, 0.15);
+}
+
+@media (min-width: 768px) {
+  .custom__control {
+    padding: 16px;
+    margin-bottom: 16px;
+
+    font-size: 16px;
+    line-height: 20px;
+  }
+}
+
+.custom__placeholder {
+  color: rgba(38, 38, 38, 0.5);
+}
+
+.custom__menu {
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 15px;
+  margin-top: 4px;
+  /* overflow: hidden; */
+  padding: 12px;
+}
+
+.custom__option {
+  color: rgba(38, 38, 38, 0.6);
+  cursor: pointer;
+  text-transform: capitalize;
+}
+
+.custom__option:not(:last-child) {
+  margin-bottom: 8px;
+}
+
+.custom__option--is-selected {
+  color: rgba(246, 184, 61, 1);
+}
+
+.selectWrapper:has(.custom__control--menu-is-open) .iconChevron {
+  transform: rotate(180deg);
+}
+
+.custom__indicators {
+  display: none;
+}
+
+.iconChevron {
+  transition: transform 0.3s ease;
+}
+
+.custom__control--menu-is-open .iconChevron {
+  transform: rotate(180deg);
+  transition: transform 0.3s ease;
+}
